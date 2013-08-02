@@ -5,7 +5,7 @@ import yjava.security.yca.Cert;
 import yjava.security.yca.YCAException;
 
 /**
- * Class to check the yca read functionalities
+ * Class to check the yca read functionalities in Yahoo based systems
  *
  */
 public class App 
