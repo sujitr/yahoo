@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.File;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.util.Calendar;
 
 import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.HttpClient;
@@ -15,35 +16,51 @@ import org.apache.commons.httpclient.methods.PostMethod;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import yjava.security.yca.YCAException;
+import com.sujit.test.ycatest.YcaReader;
+import com.sujit.yahoo.mailer.SendMail.MailerApp;
 
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 public class TableScanner {
 	private final static Logger LOGGER = Logger.getLogger(TableScanner.class .getName());
+	private final static MailerApp mailer = new MailerApp();
 	public static void main( String[] args ) throws IOException {
     	String hostNamePart = "";
-    	String ycaHeaderValue = "";
+    	String ycaAppId = "";
     	String outPutFolderPath = "";
     	if(args.length<2){
-    		LOGGER.severe("Not enough input parameters. Need the query URL string,'Yahoo-App-Auth' header value and ID List file location.");
+    		LOGGER.error("Not enough input parameters. Need the query URL string,'Yahoo-App-Auth' header value and ID List file location.");
     		return;
     	}else{
     		LOGGER.info("Obtained Query URL :"+args[0]);
-    		LOGGER.info("Obtained Header Info :"+args[1]);
+    		LOGGER.info("Obtained Yca App Id :"+args[1]);
     		LOGGER.info("Obtained List File Path :"+args[2]);
     		hostNamePart = args[0];
-    		ycaHeaderValue = args[1];
+    		ycaAppId = args[1];
     		outPutFolderPath = args[2];
     	}
-    	
+    	String ycaHeaderValue = "";
     	String startHashKey = "0x00000000" ;
     	boolean scanComplete = false;
     	HttpClient client = new HttpClient();
     	client.getHostConfiguration().setProxy("yca-proxy.corp.yahoo.com", 3128);
     	BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(outPutFolderPath+File.separator+"ScanResults.txt",true));
     	
+    	try {
+			ycaHeaderValue = YcaReader.getYcaCertificateValue(ycaAppId);
+			LOGGER.info("YCA Header obtained is:"+ycaHeaderValue);
+		} catch (YCAException e1) {
+			e1.printStackTrace();
+		}
+    	
+    	if(ycaHeaderValue==null || ycaHeaderValue.isEmpty()){
+    		LOGGER.info("Unable to obtain yca app certificate value for the given app-id on this machine. Please check the yca details.");
+    		return;
+    	}
+    	Calendar startTime = Calendar.getInstance();
     	while(!scanComplete){
-    		String sherpaResponse = hitSherpa(hostNamePart, ycaHeaderValue, startHashKey, client);
+    		String sherpaResponse = hitSherpa(hostNamePart, ycaAppId, startHashKey, client);
     		try {
 				JSONObject sherpaResponseJson = new JSONObject(sherpaResponse);
 				// get the completed flag
@@ -61,13 +78,19 @@ public class TableScanner {
 				for(String key : JSONObject.getNames(sherpaRecords)){
 					LOGGER.info("Key :"+key);
 					String uuidValue = sherpaRecords.getJSONObject(key).getJSONObject("fields").getJSONObject("UUID").getString("value");
+					//String recordValue = sherpaRecords.getJSONObject(key).getJSONObject("fields").toString();
 					bufferedWriter.write(key.trim()+"|"+uuidValue.trim());
 					bufferedWriter.newLine();
 				}
 			} catch (JSONException e) {
-				LOGGER.severe("JSON Parse Exception while attempting to parse sherpa response: "+e.getMessage());
+				LOGGER.error("JSON Parse Exception while attempting to parse sherpa response: "+e.getMessage(),e);
 			}
 			bufferedWriter.flush();
+			Calendar flagTime = Calendar.getInstance();
+       	  	int status = intervalNotify(startTime, flagTime);
+       	  	if(status == 1){
+       	  		startTime = Calendar.getInstance();
+       	  	}
     	}
     	 bufferedWriter.flush();
          bufferedWriter.close();
@@ -76,6 +99,7 @@ public class TableScanner {
              ((SimpleHttpConnectionManager)mgr).shutdown();
          }
          LOGGER.info("End of the scanner program.");
+         mailer.sendPlainTextMail("sujitroy@yahoo-inc.com", "satyan@yahoo-inc.com", "mailbot@yahoo-inc.com", "Sherpa Scan for TMS ID has finished", "Sherpa Scan for TMS ID has finished. Dump is located at '"+outPutFolderPath+File.separator+"ScanResults.txt'.\n Please do not reply to this mail id", null);
     }
     	
     
@@ -103,10 +127,10 @@ public class TableScanner {
     		 LOGGER.info("HTTP Response is = "+responseData);
     	}
     	catch(HttpException e){
-    		LOGGER.severe("Fatal protocol violation: " + e.getMessage());
+    		LOGGER.error("Fatal protocol violation: " + e.getMessage());
     	    e.printStackTrace();
     	}catch(IOException e){
-    		LOGGER.severe("Fatal transport error: " + e.getMessage());
+    		LOGGER.error("Fatal transport error: " + e.getMessage());
     	    e.printStackTrace();
     	}finally{
     		method.releaseConnection();
@@ -126,5 +150,19 @@ public class TableScanner {
     	sb.append("\",\"end_hash_key\": \"0xFFFFFFFF\"},\"record_limit\": 100,\"byte_limit\": 2097152}}");
     	return sb.toString();
     }
+    
+    
+    public static int intervalNotify(Calendar startTime, Calendar flagTime){
+		int status = 0;
+		long start = startTime.getTimeInMillis();
+		long flag = flagTime.getTimeInMillis();
+		long diff = Math.abs(flag - start);
+		long diffInSeconds = diff/1000;
+		if(diffInSeconds>=900){
+			mailer.sendPlainTextMail("sujitroy@yahoo-inc.com", "satyan@yahoo-inc.com", "mailbot@yahoo-inc.com", "Sherpa Scan for getting TMS ID's are still going on. Will update once it's over", "Sherpa Scan for getting TMS ID's are still going on. Will update once it's over. \n Please do not reply to this mail id", null);
+			status = 1;
+		}
+		return status;
+	}
       
 }

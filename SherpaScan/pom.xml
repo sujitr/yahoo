@@ -9,6 +9,7 @@
 
   <name>Sherpa Table Scanner</name>
   <url>http://maven.apache.org</url>
+  <description>This script scans a given sherpa table and dumps the results in a file</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -41,15 +42,30 @@
 		<artifactId>httpclient</artifactId>
 		<version>4.1.3</version>
 	</dependency>
-	<!-- <dependency>
-		<groupId>org.kohsuke.stapler</groupId>
-		<artifactId>json-lib</artifactId>
-		<version>2.1-rev6</version>
-	</dependency> -->
 	<dependency>
 		<groupId>org.json</groupId>
 		<artifactId>json</artifactId>
 		<version>20090211</version>
+	</dependency>
+	<dependency>
+		<groupId>com.sujit.test</groupId>
+		<artifactId>yahoo-yca</artifactId>
+		<version>0.0.1</version>
+	</dependency>
+	<dependency>
+		<groupId>com.sujit.utility</groupId>
+		<artifactId>zipapp</artifactId>
+		<version>0.0.1</version>
+	</dependency>
+	<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>1.2.17</version>
+	</dependency>
+	<dependency>
+		<groupId>com.sujit.yahoo.mailer</groupId>
+		<artifactId>SendMail</artifactId>
+		<version>0.0.3</version>
 	</dependency>
   </dependencies>
   <build>
@@ -68,9 +84,9 @@
         		<configuration>
           			<mainClass>com.sujit.bhejafry.sherpautils.TableScanner</mainClass>
          			<arguments>
-           				<argument>http://sherpa-bcp769.dht.yahoo.com:4080/YDHTWebService/V1/hash_scan/lego_entities.entity_ids_bk1/</argument>
-           				<argument>v=1;a=yahoo.globalmedia.hgp-api.env-dev;h=10.66.196.4;t=1340733367;s=bhDakJ7Pi2xl.ovuHrK2JOA0S4aqZfdh_O76AxqDuwGD5n_tVwp1ZzNdwKVZejPURaK6b2JHppGCVeIM2LIERQ--</argument>
-           				<argument>C:\Users\sujitroy\Desktop\testmelist.txt</argument>
+           				<argument>http://sherpa-bcp769.dht.yahoo.com:4080/YDHTWebService/V1/hash_scan/lego_entities.entity_ids_bk1/</argument><!-- sherpa table details, along with database -->
+           				<argument>yahoo.globalmedia.auth-yca.sherpa.env-int</argument><!-- yahoo yca app id to query the sherpa table -->
+           				<argument>C:\Users\sujitroy\Desktop</argument><!-- path of the scan dump file -->
            			</arguments>
            		</configuration>
   		</plugin>
