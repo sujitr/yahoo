@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.sujit.yahoo.mailer</groupId>
+  <artifactId>SendMail</artifactId>
+  <version>0.0.3</version>
+  <packaging>jar</packaging>
+
+  <name>SendMail - A small mail send application</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+		<groupId>javax.mail</groupId>
+		<artifactId>mail</artifactId>
+		<version>1.4</version>
+  	</dependency>
+  	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-nop</artifactId>
+		<version>1.7.5</version>
+	</dependency>
+  </dependencies>
+  <description>This application lets you to send mail from Yahoo! private mail box. The from address in this case will not be a functional mail adress instead it will be the whatever you decide. But do note that the mails sent by this application is traceable.</description>
+  <organization>
+  	<name>Yahoo!</name>
+  	<url>http://www.yahoo.com</url>
+  </organization>
+  <scm>
+  	<developerConnection>Sujit Roy - la_costa_vonita@yahoo.com</developerConnection>
+  </scm>
+</project>
