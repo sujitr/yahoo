@@ -47,10 +47,25 @@
 		<version>2.1-rev6</version>
 	</dependency>
 	<dependency>
-		<groupId>javax.mail</groupId>
-		<artifactId>mail</artifactId>
-		<version>1.4</version>
-  	</dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>1.2.17</version>
+	</dependency>
+	<dependency>
+		<groupId>com.sujit.yahoo.mailer</groupId>
+		<artifactId>SendMail</artifactId>
+		<version>0.0.3</version>
+	</dependency>
+	<dependency>
+		<groupId>com.sujit.utility</groupId>
+		<artifactId>zipapp</artifactId>
+		<version>0.0.1</version>
+	</dependency>
+	<dependency>
+		<groupId>com.sujit.test</groupId>
+		<artifactId>yahoo-yca</artifactId>
+		<version>0.0.1</version>
+	</dependency>
   </dependencies>
   <build>
   	<plugins>
@@ -68,8 +83,8 @@
         		<configuration>
           			<mainClass>com.sujit.bhejafry.sherpadelete.App</mainClass>
          			<arguments>
-           				<argument>http://req-use1.dht.yahoo.com:4080/YDHTWebService/V1/delete/MCT_Entities_DB_BK1.Legacy_Lego_ID_Mapping_bk1/</argument>
-           				<argument>v=1;a=yahoo.globalmedia.hgp-api.env-dev;h=10.66.196.4;t=1340733367;s=bhDakJ7Pi2xl.ovuHrK2JOA0S4aqZfdh_O76AxqDuwGD5n_tVwp1ZzNdwKVZejPURaK6b2JHppGCVeIM2LIERQ--</argument>
+           				<argument>http://sherpa-bcp1281.dht.yahoo.com:4080/YDHTWebService/V1/delete/lego_entities.entity_ids_bk1/</argument>
+           				<argument>yahoo.globalmedia.auth-yca.sherpa.env-int</argument>
            				<argument>C:\Users\sujitroy\Desktop\testmelist.txt</argument>
            			</arguments>
            		</configuration>
