@@ -60,7 +60,7 @@ public class App {
 		}
     	
     	if(ycaHeaderValue==null || ycaHeaderValue.isEmpty()){
-    		LOGGER.info("Unable to obtain yca app certificate value for the given app-id on this machine. Please check the yca details.");
+    		LOGGER.error("Unable to obtain yca app certificate value for the given app-id on this machine. Please check the yca details.");
     		return;
     	}
     	Scanner scanner = null;
