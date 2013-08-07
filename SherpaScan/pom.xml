@@ -84,7 +84,7 @@
         		<configuration>
           			<mainClass>com.sujit.bhejafry.sherpautils.TableScanner</mainClass>
          			<arguments>
-           				<argument>http://sherpa-bcp769.dht.yahoo.com:4080/YDHTWebService/V1/hash_scan/lego_entities.entity_ids_bk1/</argument><!-- sherpa table details, along with database -->
+           				<argument>http://sherpa-bcp1281.dht.yahoo.com:4080/YDHTWebService/V1/hash_scan/lego_entities.entity_ids_bk1/</argument><!-- sherpa table details, along with database -->
            				<argument>yahoo.globalmedia.auth-yca.sherpa.env-int</argument><!-- yahoo yca app id to query the sherpa table -->
            				<argument>C:\Users\sujitroy\Desktop</argument><!-- path of the scan dump file -->
            			</arguments>
