@@ -60,7 +60,7 @@ public class TableScanner {
     	}
     	Calendar startTime = Calendar.getInstance();
     	while(!scanComplete){
-    		String sherpaResponse = hitSherpa(hostNamePart, ycaAppId, startHashKey, client);
+    		String sherpaResponse = hitSherpa(hostNamePart, ycaHeaderValue, startHashKey, client);
     		try {
 				JSONObject sherpaResponseJson = new JSONObject(sherpaResponse);
 				// get the completed flag
