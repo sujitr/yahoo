@@ -44,6 +44,7 @@ public class MailerApp {
 		super();
 		defaultSMTPServer = "smarthost.yahoo.com";
 		defaultSMTPPort = "25";
+		System.setProperty("java.net.preferIPv4Stack" , "true");
 	}
 	
 	/**
@@ -55,6 +56,7 @@ public class MailerApp {
 		super();
 		defaultSMTPServer = smtpHost;
 		defaultSMTPPort = smtpPort;
+		System.setProperty("java.net.preferIPv4Stack" , "true");
 	}
     
     /**
