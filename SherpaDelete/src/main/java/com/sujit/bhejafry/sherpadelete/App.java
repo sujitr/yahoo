@@ -82,25 +82,27 @@ public class App {
          while ( scanner.hasNextLine() ){
         	  String value = scanner.nextLine();
         	  LOGGER.info("Reading a line from file as : "+value);
-        	  String[] x = value.split("\\|");
-        	  key = x[0];
-        	  uuidValue = x[1];
-        	  String deleteUrl = hostNamePart+URLEncoder.encode(key);
-        	  LOGGER.info("Delete URL - "+deleteUrl);
-        	  int deleteStatus = deleteSherpaEntry(deleteUrl, ycaHeaderValue.trim());
-        	  if(deleteStatus==200){
-        		  // just chill
-        	  }else{
-        		  //damn, write the entry in a log file for a retry later
-        		  bufferedWriter.write(key+"|"+uuidValue+"#"+deleteStatus +" - HTTP response from Sherpa");
-        		  bufferedWriter.newLine();
-        		  bufferedWriter.flush();
+        	  if(value!=null && !value.trim().isEmpty()){
+        		  String[] x = value.split("\\|");
+            	  key = x[0];
+            	  uuidValue = x[1];
+            	  String deleteUrl = hostNamePart+URLEncoder.encode(key);
+            	  LOGGER.info("Delete URL - "+deleteUrl);
+            	  int deleteStatus = deleteSherpaEntry(deleteUrl, ycaHeaderValue.trim());
+            	  if(deleteStatus==200){
+            		  // just chill
+            	  }else{
+            		  //damn, write the entry in a log file for a retry later
+            		  bufferedWriter.write(key+"|"+uuidValue+"#"+deleteStatus +" - HTTP response from Sherpa");
+            		  bufferedWriter.newLine();
+            		  bufferedWriter.flush();
+            	  }
+            	  Calendar flagTime = Calendar.getInstance();
+             	  int status = intervalNotify(startTime, flagTime, sherpaTableName);
+             	  if(status == 1){
+             		 startTime = Calendar.getInstance();
+             	  }
         	  }
-        	  Calendar flagTime = Calendar.getInstance();
-         	  int status = intervalNotify(startTime, flagTime, sherpaTableName);
-         	  if(status == 1){
-         		 startTime = Calendar.getInstance();
-         	  }
           }
         } catch (FileNotFoundException e) {
 			LOGGER.error("File Not Found - "+listFilePath);
