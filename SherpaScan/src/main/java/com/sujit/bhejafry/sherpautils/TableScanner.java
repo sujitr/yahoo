@@ -46,7 +46,7 @@ public class TableScanner {
     	HttpClient client = new HttpClient();
     	client.getHostConfiguration().setProxy("yca-proxy.corp.yahoo.com", 3128);
     	BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(outPutFolderPath+File.separator+"ScanResults.txt",true));
-    	
+    	String sherpaTableName = hostNamePart.substring(hostNamePart.indexOf("hash_scan/")+10, hostNamePart.length()-1);
     	try {
 			ycaHeaderValue = YcaReader.getYcaCertificateValue(ycaAppId);
 			LOGGER.info("YCA Header obtained is:"+ycaHeaderValue);
@@ -55,7 +55,7 @@ public class TableScanner {
 		}
     	
     	if(ycaHeaderValue==null || ycaHeaderValue.isEmpty()){
-    		LOGGER.info("Unable to obtain yca app certificate value for the given app-id on this machine. Please check the yca details.");
+    		LOGGER.info("Unable to obtain yca app certificate value for the given app-id on this machine. Please check the yca-appid details.");
     		return;
     	}
     	Calendar startTime = Calendar.getInstance();
@@ -98,8 +98,8 @@ public class TableScanner {
          if (mgr instanceof SimpleHttpConnectionManager) {
              ((SimpleHttpConnectionManager)mgr).shutdown();
          }
-         LOGGER.info("End of the scanner program.");
-         mailer.sendPlainTextMail("sujitroy@yahoo-inc.com", "satyan@yahoo-inc.com", "mailbot@yahoo-inc.com", "Sherpa Scan for TMS ID has finished", "Sherpa Scan for TMS ID has finished. Dump is located at '"+outPutFolderPath+File.separator+"ScanResults.txt'.\n Please do not reply to this mail id", null);
+         LOGGER.info("End of the ID Assigner Sherpa Table scanner program.");
+         mailer.sendPlainTextMail("sujitroy@yahoo-inc.com",null, "mailbot@yahoo-inc.com", "Sherpa table scan for ID Assigner table "+sherpaTableName+" has finished", "Sherpa Scan for ID assigner table "+ sherpaTableName +" has finished successfully. Dump is located at '"+outPutFolderPath+File.separator+"ScanResults.txt'.\nPlease do not reply to this mail id", null);
     }
     	
     
@@ -159,7 +159,7 @@ public class TableScanner {
 		long diff = Math.abs(flag - start);
 		long diffInSeconds = diff/1000;
 		if(diffInSeconds>=900){
-			mailer.sendPlainTextMail("sujitroy@yahoo-inc.com", "satyan@yahoo-inc.com", "mailbot@yahoo-inc.com", "Sherpa Scan for getting TMS ID's are still going on. Will update once it's over", "Sherpa Scan for getting TMS ID's are still going on. Will update once it's over. \n Please do not reply to this mail id", null);
+			mailer.sendPlainTextMail("sujitroy@yahoo-inc.com", null, "mailbot@yahoo-inc.com", "Sherpa Scan is still going on. Will update once it's over", "Sherpa Scan is still going on. Will update once it's over. \nPlease do not reply to this mail id", null);
 			status = 1;
 		}
 		return status;
