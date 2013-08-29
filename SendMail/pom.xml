@@ -4,7 +4,7 @@
 
   <groupId>com.sujit.yahoo.mailer</groupId>
   <artifactId>SendMail</artifactId>
-  <version>0.0.3</version>
+  <version>0.0.4</version>
   <packaging>jar</packaging>
 
   <name>SendMail - A small mail send application</name>
