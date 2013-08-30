@@ -17,6 +17,8 @@ import java.util.Scanner;
 
 import org.apache.log4j.Logger;
 
+import com.sujit.utility.zipapp.Zipper;
+import com.sujit.yahoo.mailer.SendMail.MailerApp;
 import com.yahoo.ccm.CCMList;
 import com.yahoo.ccm.CCMObject;
 import com.yahoo.ccm.Facet;
@@ -62,16 +64,13 @@ public class App {
 	 * Method to filter out the unique uuid's which are associated with tribune media alt-src keys.
 	 * This method uses linux native commands 'egrep', 'cut' and 'sort' for faster performance over large files.
 	 * @throws IOException
+	 * @throws InterruptedException 
 	 */
-	private void filterTribuneMediaRecords() throws IOException{
+	private void filterTribuneMediaRecords() throws IOException, InterruptedException{
 		Log.info("|-- attempting to filter out the sherpa table dump...");
 		String[] shellcmd = {"/bin/sh", "-c", "egrep \"tribune\" "+ sherpaDumpFile +" | cut -f1 -d'|' | sort -u"};
 		Process p = Runtime.getRuntime().exec(shellcmd);
-		try {
-			p.waitFor();
-		} catch (InterruptedException e) {
-			Log.error("|-- Linux native process call has been interrupted!", e);
-		}
+		p.waitFor();
 		/*
 		 * The file writer component initialization
 		 */
@@ -100,11 +99,7 @@ public class App {
 	 */
 	private int getNumberOfLines(String fileName) throws IOException{
 		LineNumberReader reader = null;
-		try {
-			reader = new LineNumberReader(new FileReader(fileName));
-		} catch (FileNotFoundException e) {
-			Log.error("|-- Error while counting lines", e);
-		}
+		reader = new LineNumberReader(new FileReader(fileName));
 		int cnt = 0;
 		String lineRead = "";
 		while ((lineRead = reader.readLine()) != null) {}
@@ -203,7 +198,7 @@ public class App {
 				}
 			}
 		}catch(Exception e){
-			Log.error("|-- Error encountered:"+e.getMessage(),e);
+			Log.error("|-- Error encountered while processing the data :"+e.getMessage(),e);
 		}
 		finally{
 			keyWriter.flush();
@@ -217,12 +212,12 @@ public class App {
 	 * Method to collect the statistics of the entire process
 	 * @throws IOException
 	 */
-	private void extractStatistics() throws IOException{
+	private String extractStatistics() throws IOException{
 		StringBuilder plainTextStatistics = new StringBuilder();
 		plainTextStatistics.append("========================================================================\n");
 		plainTextStatistics.append("====================== Tribune ID Removal Statistics ==========================\n");
 		plainTextStatistics.append("========================================================================\n");
-		plainTextStatistics.append("Number of records present in the Sherpa Table dump of ID Assigner Table :"+getNumberOfLines(sherpaDumpFile)+"\n");
+		plainTextStatistics.append("Number of records present in the Sherpa Table dump of ID Assigner Table (Input File - '"+ sherpaDumpFile +"') :"+getNumberOfLines(sherpaDumpFile)+"\n");
 		plainTextStatistics.append("Number of unique UUID's filtered from the sherpa dump having tribune alt-src keys :"+getNumberOfLines(tribuneUUIDFile)+"\n");
 		plainTextStatistics.append("Number of alt-src keys which has been removed from UUID's and which also needs to be deleted from ID Assigner table :"+getNumberOfLines(targetAltSrcFile)+"\n");
 		plainTextStatistics.append("Number of CCM's which were updated and needs to be posted :"+getNumberOfLines(updatedCCMFile));
@@ -236,6 +231,7 @@ public class App {
 		statWriter.newLine();
 		statWriter.flush();
 		statWriter.close();
+		return plainTextStatistics.toString();
 	}
 	
 	/**
@@ -251,13 +247,35 @@ public class App {
 			Log.info("Obtained carmot read URL :" + args[1]);
 			if(args[0]!=null && !args[0].isEmpty() && args[1]!=null && !args[1].isEmpty()){
 				App eraseApp = new App(args[0], args[1]);
+				MailerApp mailer = new MailerApp();
+				Zipper zip = new Zipper();
 				try {
 					Log.info("|-- Number of lines in the Sherpa Dump :"+eraseApp.getNumberOfLines(eraseApp.sherpaDumpFile));
 					eraseApp.filterTribuneMediaRecords();
 					eraseApp.processUUIDs();
-					eraseApp.extractStatistics();
-				} catch (Exception e) {
-					Log.error("|-- Exception encountered", e);
+					if(eraseApp.getNumberOfLines(eraseApp.targetAltSrcFile)>0){
+						String statisticsDetail = eraseApp.extractStatistics();
+						List<String> filesToBeZipped = new ArrayList<String>();
+						filesToBeZipped.add(eraseApp.tribuneUUIDFile);
+						filesToBeZipped.add(eraseApp.targetAltSrcFile);
+						filesToBeZipped.add(eraseApp.updatedCCMFile);
+						filesToBeZipped.add(eraseApp.statisticsFile);
+						zip.makeZip(filesToBeZipped, eraseApp.workspaceLocation+File.separator+"TMSRemovalArtifacts.zip");
+						List<String> finalZippedList = new ArrayList<String>();
+						finalZippedList.add(eraseApp.workspaceLocation+File.separator+"TMSRemovalArtifacts.zip");
+						mailer.sendHTMLMail("sujitroy@yahoo-inc.com", null, "mailbot@yahoo-inc.com", "TMS alt-src key removal task execution completed", "<h3>TMS alt-src key task execution has been completed</h3><br><p>"+statisticsDetail+"</p><br><p>Attached files contains the list of alt-src'es removed from CCM's and the updated CCM's which can now be posted.</p><hr><h4>This is an automated mail. Please do not reply to this email address.</h4>", finalZippedList);
+					}else{
+						List<String> filesToBeZipped = new ArrayList<String>();
+						filesToBeZipped.add(eraseApp.tribuneUUIDFile);
+						filesToBeZipped.add(eraseApp.statisticsFile);
+						zip.makeZip(filesToBeZipped, eraseApp.workspaceLocation+File.separator+"TMSRemovalArtifacts.zip");
+						List<String> finalZippedList = new ArrayList<String>();
+						finalZippedList.add(eraseApp.workspaceLocation+File.separator+"TMSRemovalArtifacts.zip");
+						mailer.sendHTMLMail("sujitroy@yahoo-inc.com", null, "mailbot@yahoo-inc.com", "TMS alt-src key removal task execution completed - no suspected alt-src key found", "<h3>TMS alt-src key task execution has been completed</h3><br><p>However, there are no such alt-src keys which needed to be removed. Attached zip file contains the listing of the UUID's which were processed.</p><hr><h4>This is an automated mail. Please do not reply to this email address.</h4>", finalZippedList);
+					}
+				}  catch (Exception e) {
+					Log.error("|-- Exception encountered: "+e.getMessage(), e);
+					mailer.sendPlainTextMail("sujitroy@yahoo-inc.com", null, "mailbot@yahoo-inc.com", "TMS alt-src key removal task execution encountered an error", "Exception was thrown \n"+e.getMessage()+"\nThe stacktrace is - \n"+e.getStackTrace(), null);
 				}
 			}else{
 				Log.info("|-- there is something wrong with the input arguments to the program...please check the details");
