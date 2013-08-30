@@ -42,6 +42,8 @@ public class App {
 	private String targetAltSrcFile = "";
 	private String updatedCCMFile = "";
 	private String statisticsFile = "";
+	private String ccmBackupFile = "";
+	private String altKeyBackupFile = "";
 	
 	/**
 	 * Constructor
@@ -58,6 +60,9 @@ public class App {
 		this.targetAltSrcFile = workspaceLocation+File.separator+"AltKeysWhichNeedToBeRemovedFromSherpa.txt"; // this is the file where all filtered tribunemedia alt-src keys (which were removed from ccm's) will be kept
 		this.updatedCCMFile = workspaceLocation+File.separator+"UpdatedCCMsToBePostedBack.txt"; // this is the file where all the updated ccm's (baseline_movie/cinemasource_venue facet + self facets) will be placed (one ccm per line)
 		this.statisticsFile = workspaceLocation+File.separator+"Statistics.txt"; // this is the file to store the statistics of the operation
+		this.ccmBackupFile = workspaceLocation+File.separator+"CCMBackup.txt"; // this is the file to store the backup of the ccm's which are getting updated
+		this.altKeyBackupFile = workspaceLocation+File.separator+"AltKeyBackup.txt"; // this is the file to store the backup of the alt-src key to UUID mapping which are getting updated
+		
 	}
 	
 	/**
@@ -119,14 +124,25 @@ public class App {
 		CCMObjectJSONSerializer serializer = new CCMObjectJSONSerializer();
 		File targetKeyFile = new File(targetAltSrcFile);
 		File postJsonFile = new File(updatedCCMFile);
+		File ccmBkpFile = new File(ccmBackupFile);
+		File altKeyBkpFile = new File(altKeyBackupFile);
+		// cleanup any old file
 		if(targetKeyFile.exists()&&targetKeyFile.delete()){
 			targetKeyFile.createNewFile();
 		}
 		if(postJsonFile.exists()&&postJsonFile.delete()){
 			postJsonFile.createNewFile();
 		}
+		if(ccmBkpFile.exists()&&ccmBkpFile.delete()){
+			ccmBkpFile.createNewFile();
+		}
+		if(altKeyBkpFile.exists()&&altKeyBkpFile.delete()){
+			altKeyBkpFile.createNewFile();
+		}
 		BufferedWriter keyWriter = new BufferedWriter(new FileWriter(targetKeyFile,true));
 		BufferedWriter jsonWriter = new BufferedWriter(new FileWriter(postJsonFile,true));
+		BufferedWriter ccmBackupWriter = new BufferedWriter(new FileWriter(ccmBkpFile,true));
+		BufferedWriter altSrcBackupWriter = new BufferedWriter(new FileWriter(altKeyBkpFile,true));
 		try {
 			scanner = new Scanner(new FileReader(tribuneUUIDFile));
 			while (scanner.hasNextLine()) {
@@ -159,6 +175,9 @@ public class App {
 										// write the key in a file for reference
 										keyWriter.write(altKey);
 										keyWriter.newLine();
+										// write the alt src key in the backup file
+										altSrcBackupWriter.write(altKey+"|"+uuid);
+										altSrcBackupWriter.newLine();
 									}
 								}
 								Log.info("|-- Number of taregt tribunemedia keys obtained for UUID "+ uuid +" is :"+targetKeyCounter);
@@ -184,6 +203,9 @@ public class App {
 								// write the key in a file for reference
 								keyWriter.write(altKey);
 								keyWriter.newLine();
+								// write the alt src key in the backup file
+								altSrcBackupWriter.write(altKey+"|"+uuid);
+								altSrcBackupWriter.newLine();
 							}
 						}
 						Log.info("|-- Number of taregt tribunemedia keys obtained for UUID "+ uuid +" is :"+targetKeyCounter);
@@ -194,6 +216,9 @@ public class App {
 						String ccmString = serializer.serialize(postCcm);
 						jsonWriter.write(ccmString);
 						jsonWriter.newLine();
+						// write the original ccm in the backup file
+						ccmBackupWriter.write(serializer.serialize(ccmObject));
+						ccmBackupWriter.newLine();
 					}
 				}
 			}
@@ -205,6 +230,10 @@ public class App {
 			keyWriter.close();
 			jsonWriter.flush();
 			jsonWriter.close();
+			altSrcBackupWriter.flush();
+			altSrcBackupWriter.close();
+			ccmBackupWriter.flush();
+			ccmBackupWriter.close();
 		}
 	}
 	
@@ -260,6 +289,8 @@ public class App {
 						filesToBeZipped.add(eraseApp.targetAltSrcFile);
 						filesToBeZipped.add(eraseApp.updatedCCMFile);
 						filesToBeZipped.add(eraseApp.statisticsFile);
+						filesToBeZipped.add(eraseApp.altKeyBackupFile);
+						filesToBeZipped.add(eraseApp.ccmBackupFile);
 						zip.makeZip(filesToBeZipped, eraseApp.workspaceLocation+File.separator+"TMSRemovalArtifacts.zip");
 						List<String> finalZippedList = new ArrayList<String>();
 						finalZippedList.add(eraseApp.workspaceLocation+File.separator+"TMSRemovalArtifacts.zip");
