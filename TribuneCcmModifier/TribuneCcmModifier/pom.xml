@@ -36,6 +36,16 @@
 		<artifactId>media_data_api_lib</artifactId>
 		<version>0.2.21</version>
 	</dependency>
+	<dependency>
+		<groupId>com.sujit.utility</groupId>
+		<artifactId>zipapp</artifactId>
+		<version>0.0.1</version>
+	</dependency>
+	<dependency>
+		<groupId>com.sujit.yahoo.mailer</groupId>
+		<artifactId>SendMail</artifactId>
+		<version>0.0.4</version>
+	</dependency>
   </dependencies>
   <build>
   	<plugins>
