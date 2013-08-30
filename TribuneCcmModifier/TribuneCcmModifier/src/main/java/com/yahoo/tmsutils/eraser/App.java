@@ -296,6 +296,7 @@ public class App {
 						finalZippedList.add(eraseApp.workspaceLocation+File.separator+"TMSRemovalArtifacts.zip");
 						mailer.sendHTMLMail("sujitroy@yahoo-inc.com", null, "mailbot@yahoo-inc.com", "TMS alt-src key removal task execution completed", "<h3>TMS alt-src key task execution has been completed</h3><br><p>"+statisticsDetail+"</p><br><p>Attached files contains the list of alt-src'es removed from CCM's and the updated CCM's which can now be posted.</p><hr><h4>This is an automated mail. Please do not reply to this email address.</h4>", finalZippedList);
 					}else{
+						String statisticsDetail = eraseApp.extractStatistics();
 						List<String> filesToBeZipped = new ArrayList<String>();
 						filesToBeZipped.add(eraseApp.tribuneUUIDFile);
 						filesToBeZipped.add(eraseApp.statisticsFile);
