@@ -44,6 +44,7 @@ public class App {
 	private String statisticsFile = "";
 	private String ccmBackupFile = "";
 	private String altKeyBackupFile = "";
+	private String errorRecordFile = "";
 	
 	/**
 	 * Constructor
@@ -62,7 +63,7 @@ public class App {
 		this.statisticsFile = workspaceLocation+File.separator+"Statistics.txt"; // this is the file to store the statistics of the operation
 		this.ccmBackupFile = workspaceLocation+File.separator+"CCMBackup.txt"; // this is the file to store the backup of the ccm's which are getting updated
 		this.altKeyBackupFile = workspaceLocation+File.separator+"AltKeyBackup.txt"; // this is the file to store the backup of the alt-src key to UUID mapping which are getting updated
-		
+		this.errorRecordFile = workspaceLocation+File.separator+"ErrorRecord.txt"; // this is the file which will record any kind of error while processing the CCM's, so that they could be re-tried later 
 	}
 	
 	/**
@@ -75,8 +76,7 @@ public class App {
 		Log.info("|-- attempting to filter out the sherpa table dump...");
 		String[] shellcmd = {"/bin/sh", "-c", "egrep \"tribune\" "+ sherpaDumpFile +" | cut -f1 -d'|' | sort -u"};
 		Process p = Runtime.getRuntime().exec(shellcmd);
-		//p.waitFor();
-		Log.info("|-- Native call finished..");
+		Log.info("|-- Native call finished...writing out the results...");
 		/*
 		 * The file writer component initialization
 		 */
@@ -127,6 +127,7 @@ public class App {
 		File postJsonFile = new File(updatedCCMFile);
 		File ccmBkpFile = new File(ccmBackupFile);
 		File altKeyBkpFile = new File(altKeyBackupFile);
+		File errorFile = new File(errorRecordFile);
 		// cleanup any old file
 		if(targetKeyFile.exists()&&targetKeyFile.delete()){
 			targetKeyFile.createNewFile();
@@ -140,17 +141,27 @@ public class App {
 		if(altKeyBkpFile.exists()&&altKeyBkpFile.delete()){
 			altKeyBkpFile.createNewFile();
 		}
+		if(errorFile.exists()&&errorFile.delete()){
+			errorFile.createNewFile();
+		}
 		BufferedWriter keyWriter = new BufferedWriter(new FileWriter(targetKeyFile,true));
 		BufferedWriter jsonWriter = new BufferedWriter(new FileWriter(postJsonFile,true));
 		BufferedWriter ccmBackupWriter = new BufferedWriter(new FileWriter(ccmBkpFile,true));
 		BufferedWriter altSrcBackupWriter = new BufferedWriter(new FileWriter(altKeyBkpFile,true));
+		BufferedWriter errorWriter = new BufferedWriter(new FileWriter(errorFile,true));
 		try {
 			scanner = new Scanner(new FileReader(tribuneUUIDFile));
 			while (scanner.hasNextLine()) {
 				String uuid = scanner.nextLine().trim();
 				Log.info("|-- checking for UUID :"+uuid);
 				facetNameList.clear();
-				CCMObject ccmObject = CCMHelper.getCCMObjectFromUUID(uuid, carmotReadUrl);
+				CCMObject ccmObject = null;
+				try{
+					ccmObject = CCMHelper.getCCMObjectFromUUID(uuid, carmotReadUrl);
+				}catch(IOException iex){
+					errorWriter.write("|-- Error occurred while reading UUID contents :"+iex.getMessage());
+					Log.error("|-- Error :"+iex.getMessage(),iex);
+				}
 				boolean updateFlag=false;
 				if (ccmObject != null) {
 					Facet selfFact = ccmObject.getIdentity();
@@ -265,6 +276,8 @@ public class App {
 			}
 		}catch(Exception e){
 			Log.error("|-- Error encountered while processing the data :"+e.getMessage(),e);
+			errorWriter.write("|-- Error encountered while processing :"+e.getMessage());
+			errorWriter.newLine();
 		}
 		finally{
 			keyWriter.flush();
@@ -275,6 +288,8 @@ public class App {
 			altSrcBackupWriter.close();
 			ccmBackupWriter.flush();
 			ccmBackupWriter.close();
+			errorWriter.flush();
+			errorWriter.close();
 		}
 	}
 	
@@ -326,16 +341,16 @@ public class App {
 					if(eraseApp.getNumberOfLines(eraseApp.targetAltSrcFile)>0){
 						String statisticsDetail = eraseApp.extractStatistics();
 						List<String> filesToBeZipped = new ArrayList<String>();
-						filesToBeZipped.add(eraseApp.tribuneUUIDFile);
+						//filesToBeZipped.add(eraseApp.tribuneUUIDFile);
 						filesToBeZipped.add(eraseApp.targetAltSrcFile);
 						filesToBeZipped.add(eraseApp.updatedCCMFile);
 						filesToBeZipped.add(eraseApp.statisticsFile);
-						filesToBeZipped.add(eraseApp.altKeyBackupFile);
-						filesToBeZipped.add(eraseApp.ccmBackupFile);
+						//filesToBeZipped.add(eraseApp.altKeyBackupFile);
+						//filesToBeZipped.add(eraseApp.ccmBackupFile);
 						zip.makeZip(filesToBeZipped, eraseApp.workspaceLocation+File.separator+"TMSRemovalArtifacts.zip");
 						List<String> finalZippedList = new ArrayList<String>();
 						finalZippedList.add(eraseApp.workspaceLocation+File.separator+"TMSRemovalArtifacts.zip");
-						mailer.sendHTMLMail("sujitroy@yahoo-inc.com", null, "mailbot@yahoo-inc.com", "TMS alt-src key removal task execution completed", "<h3>TMS alt-src key removal task execution has been completed</h3><p>"+statisticsDetail+"</p><br><p>Attached files contains the list of alt-src'es removed from CCM's and the updated CCM's which can now be posted. The zip archive also contains the backup files for CCM's modified and the alt-src key vs UUID's which are to be removed.</p><hr><h5>This is an automated mail. Please do not reply to this email address.</h5>", finalZippedList);
+						mailer.sendHTMLMail("sujitroy@yahoo-inc.com", null, "mailbot@yahoo-inc.com", "TMS alt-src key removal task execution completed", "<h3>TMS alt-src key removal task execution has been completed</h3><p>"+statisticsDetail+"</p><br><p>Attached files contains the list of alt-src'es removed from CCM's and the updated CCM's which can now be posted. The backup files for CCM's modified and the alt-src key vs UUID's which are to be removed, and the targeted Tribune UUID's are available at the location - "+ eraseApp.workspaceLocation +"</p><hr><h5>This is an automated mail. Please do not reply to this email address.</h5>", finalZippedList);
 					}else{
 						String statisticsDetail = eraseApp.extractStatistics();
 						List<String> filesToBeZipped = new ArrayList<String>();
