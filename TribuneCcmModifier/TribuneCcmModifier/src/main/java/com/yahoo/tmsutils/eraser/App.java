@@ -194,7 +194,7 @@ public class App {
 										altSrcBackupWriter.newLine();
 									}
 								}
-								Log.info("|-- Number of taregt tribunemedia keys obtained for UUID "+ uuid +" is :"+targetKeyCounter);
+								Log.info("|-- Number of target tribunemedia keys obtained for UUID "+ uuid +" is :"+targetKeyCounter);
 								if (targetKeyCounter>0) {
 									// create the post json and write it in a file
 									CCMObject postCcm = new CCMObject(ccmObject.getId());
