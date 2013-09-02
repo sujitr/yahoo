@@ -149,6 +149,7 @@ public class App {
 				String uuid = scanner.nextLine().trim();
 				Log.info("|-- checking for UUID :"+uuid);
 				CCMObject ccmObject = CCMHelper.getCCMObjectFromUUID(uuid, carmotReadUrl);
+				boolean updateFlag=false;
 				if (ccmObject != null) {
 					Facet selfFact = ccmObject.getIdentity();
 					Iterator<Entry<String, Facet>> facets = ccmObject.getFacetsIterator();
@@ -156,8 +157,8 @@ public class App {
 						String facetName = facets.next().getKey();
 						facetNameList.add(facetName.trim());
 					}
-					if(facetNameList.contains("baseline_movie:movie")){
-						Facet movieFacet = ccmObject.getFacet("baseline_movie:movie");
+					if(facetNameList.contains("baseline:movie")){
+						Facet movieFacet = ccmObject.getFacet("baseline:movie");
 						String entityType = movieFacet.getAsString("entity_type");
 						if(entityType!=null){
 							if(entityType.trim().equals("movie")){
@@ -181,14 +182,47 @@ public class App {
 									}
 								}
 								Log.info("|-- Number of taregt tribunemedia keys obtained for UUID "+ uuid +" is :"+targetKeyCounter);
-								// create the post json and write it in a file
-								CCMObject postCcm = new CCMObject(ccmObject.getId());
-								postCcm.addIdentity(selfFact);
-								postCcm.addFacet("baseline_movie:movie", movieFacet);
-								String ccmString = serializer.serialize(postCcm);
-								jsonWriter.write(ccmString);
-								jsonWriter.newLine();
+								if (targetKeyCounter>0) {
+									// create the post json and write it in a file
+									CCMObject postCcm = new CCMObject(ccmObject.getId());
+									postCcm.addIdentity(selfFact);
+									postCcm.addFacet("baseline:movie",movieFacet);
+									String ccmString = serializer.serialize(postCcm);
+									jsonWriter.write(ccmString);
+									jsonWriter.newLine();
+									updateFlag = true;
+								}
 							}
+						}
+					}else if(facetNameList.contains("baseline_movie:movie")){
+						Facet movieFacet = ccmObject.getFacet("baseline_movie:movie");
+						// remove the suspected alternate keys
+						CCMList altList = movieFacet.getAsCCMList("alternate_key");
+						Iterator<Object> altIterator = altList.iterator();
+						int targetKeyCounter = 0;
+						while(altIterator.hasNext()){
+							String altKey = (String)altIterator.next();
+							if(altKey.trim().contains("tribunemediaservices.com/program?id=EP")||altKey.trim().contains("tribunemediaservices.com/series?id=SH")||altKey.trim().contains("tribunemediaservices.com/theater?id=")){
+								altIterator.remove();
+								targetKeyCounter=targetKeyCounter+1;
+								// write the key in a file for reference
+								keyWriter.write(altKey);
+								keyWriter.newLine();
+								// write the alt src key in the backup file
+								altSrcBackupWriter.write(altKey+"|"+uuid);
+								altSrcBackupWriter.newLine();
+							}
+						}
+						Log.info("|-- Number of taregt tribunemedia keys obtained for UUID "+ uuid +" is :"+targetKeyCounter);
+						if (targetKeyCounter>0) {
+							// create the post json and write it in a file
+							CCMObject postCcm = new CCMObject(ccmObject.getId());
+							postCcm.addIdentity(selfFact);
+							postCcm.addFacet("baseline_movie:movie", movieFacet);
+							String ccmString = serializer.serialize(postCcm);
+							jsonWriter.write(ccmString);
+							jsonWriter.newLine();
+							updateFlag = true;
 						}
 					}else if(facetNameList.contains("cinemasource:venue")){
 						Facet venueFacet = ccmObject.getFacet("cinemasource:venue");
@@ -209,13 +243,18 @@ public class App {
 							}
 						}
 						Log.info("|-- Number of taregt tribunemedia keys obtained for UUID "+ uuid +" is :"+targetKeyCounter);
-						// create the post json and write it in a file
-						CCMObject postCcm = new CCMObject(ccmObject.getId());
-						postCcm.addIdentity(selfFact);
-						postCcm.addFacet("cinemasource:venue", venueFacet);
-						String ccmString = serializer.serialize(postCcm);
-						jsonWriter.write(ccmString);
-						jsonWriter.newLine();
+						if (targetKeyCounter>0) {
+							// create the post json and write it in a file
+							CCMObject postCcm = new CCMObject(ccmObject.getId());
+							postCcm.addIdentity(selfFact);
+							postCcm.addFacet("cinemasource:venue", venueFacet);
+							String ccmString = serializer.serialize(postCcm);
+							jsonWriter.write(ccmString);
+							jsonWriter.newLine();
+							updateFlag = true;
+						}
+					}
+					if(updateFlag){
 						// write the original ccm in the backup file
 						ccmBackupWriter.write(serializer.serialize(ccmObject));
 						ccmBackupWriter.newLine();
