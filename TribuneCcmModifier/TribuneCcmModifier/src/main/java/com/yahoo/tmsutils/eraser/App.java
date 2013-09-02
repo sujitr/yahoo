@@ -75,7 +75,8 @@ public class App {
 		Log.info("|-- attempting to filter out the sherpa table dump...");
 		String[] shellcmd = {"/bin/sh", "-c", "egrep \"tribune\" "+ sherpaDumpFile +" | cut -f1 -d'|' | sort -u"};
 		Process p = Runtime.getRuntime().exec(shellcmd);
-		p.waitFor();
+		//p.waitFor();
+		Log.info("|-- Native call finished..");
 		/*
 		 * The file writer component initialization
 		 */
@@ -148,6 +149,7 @@ public class App {
 			while (scanner.hasNextLine()) {
 				String uuid = scanner.nextLine().trim();
 				Log.info("|-- checking for UUID :"+uuid);
+				facetNameList.clear();
 				CCMObject ccmObject = CCMHelper.getCCMObjectFromUUID(uuid, carmotReadUrl);
 				boolean updateFlag=false;
 				if (ccmObject != null) {
