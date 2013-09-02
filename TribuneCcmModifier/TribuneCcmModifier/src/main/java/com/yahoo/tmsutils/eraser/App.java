@@ -294,7 +294,7 @@ public class App {
 						zip.makeZip(filesToBeZipped, eraseApp.workspaceLocation+File.separator+"TMSRemovalArtifacts.zip");
 						List<String> finalZippedList = new ArrayList<String>();
 						finalZippedList.add(eraseApp.workspaceLocation+File.separator+"TMSRemovalArtifacts.zip");
-						mailer.sendHTMLMail("sujitroy@yahoo-inc.com", null, "mailbot@yahoo-inc.com", "TMS alt-src key removal task execution completed", "<h3>TMS alt-src key task execution has been completed</h3><br><p>"+statisticsDetail+"</p><br><p>Attached files contains the list of alt-src'es removed from CCM's and the updated CCM's which can now be posted.</p><hr><h4>This is an automated mail. Please do not reply to this email address.</h4>", finalZippedList);
+						mailer.sendHTMLMail("sujitroy@yahoo-inc.com", null, "mailbot@yahoo-inc.com", "TMS alt-src key removal task execution completed", "<h3>TMS alt-src key removal task execution has been completed</h3><p>"+statisticsDetail+"</p><br><p>Attached files contains the list of alt-src'es removed from CCM's and the updated CCM's which can now be posted. The zip archive also contains the backup files for CCM's modified and the alt-src key vs UUID's which are to be removed.</p><hr><h5>This is an automated mail. Please do not reply to this email address.</h5>", finalZippedList);
 					}else{
 						String statisticsDetail = eraseApp.extractStatistics();
 						List<String> filesToBeZipped = new ArrayList<String>();
@@ -303,7 +303,7 @@ public class App {
 						zip.makeZip(filesToBeZipped, eraseApp.workspaceLocation+File.separator+"TMSRemovalArtifacts.zip");
 						List<String> finalZippedList = new ArrayList<String>();
 						finalZippedList.add(eraseApp.workspaceLocation+File.separator+"TMSRemovalArtifacts.zip");
-						mailer.sendHTMLMail("sujitroy@yahoo-inc.com", null, "mailbot@yahoo-inc.com", "TMS alt-src key removal task execution completed - no suspected alt-src key found", "<h3>TMS alt-src key task execution has been completed</h3><br><p>However, there are no such alt-src keys which needed to be removed. Attached zip file contains the listing of the UUID's which were processed.</p><hr><h4>This is an automated mail. Please do not reply to this email address.</h4>", finalZippedList);
+						mailer.sendHTMLMail("sujitroy@yahoo-inc.com", null, "mailbot@yahoo-inc.com", "TMS alt-src key removal task execution completed - no suspected alt-src key found", "<h3>TMS alt-src key task execution has been completed</h3><p>However, there are no such alt-src keys which needed to be removed. Attached zip file contains the listing of the UUID's which were processed.</p><hr><h5>This is an automated mail. Please do not reply to this email address.</h5>", finalZippedList);
 					}
 				}  catch (Exception e) {
 					Log.error("|-- Exception encountered: "+e.getMessage(), e);
