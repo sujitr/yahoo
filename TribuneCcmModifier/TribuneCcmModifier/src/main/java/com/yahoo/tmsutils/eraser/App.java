@@ -164,6 +164,7 @@ public class App {
 				}
 				boolean updateFlag=false;
 				if (ccmObject != null) {
+					String backupCCMString = serializer.serialize(ccmObject);
 					Facet selfFact = ccmObject.getIdentity();
 					Iterator<Entry<String, Facet>> facets = ccmObject.getFacetsIterator();
 					while(facets.hasNext()){
@@ -269,7 +270,7 @@ public class App {
 					}
 					if(updateFlag){
 						// write the original ccm in the backup file
-						ccmBackupWriter.write(serializer.serialize(ccmObject));
+						ccmBackupWriter.write(backupCCMString);
 						ccmBackupWriter.newLine();
 					}
 				}

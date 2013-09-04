@@ -4,7 +4,7 @@
 
   <groupId>com.yahoo.tmsutils</groupId>
   <artifactId>eraser</artifactId>
-  <version>0.0.4</version>
+  <version>0.0.5</version>
   <packaging>jar</packaging>
 
   <name>eraser</name>
