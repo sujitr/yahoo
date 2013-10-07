@@ -1,0 +1,93 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.sujit.bhejafry</groupId>
+  <artifactId>xmlextractor</artifactId>
+  <version>0.1</version>
+  <packaging>jar</packaging>
+
+  <name>UA - Utility Artifacts - XML Extractor</name>
+  <description>This package helps you to extract some node childs (a subset of nodes) from a given XML. With this you can easily fetch any number of specified children nodes in a separate xml file.</description>
+  <url>http://maven.apache.org</url>
+  <developers>
+  	<developer>
+  		<name>Sujit Roy</name>
+  		<organization>Infosys</organization>
+  		<email>sujitr@gmail.com</email>
+  	</developer>
+  </developers>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+		<groupId>commons-httpclient</groupId>
+		<artifactId>commons-httpclient</artifactId>
+		<version>3.1</version>
+	</dependency>
+	<dependency>
+		<groupId>commons-codec</groupId>
+		<artifactId>commons-codec</artifactId>
+		<version>1.6</version>
+	</dependency>
+	<dependency>
+		<groupId>commons-logging</groupId>
+		<artifactId>commons-logging</artifactId>
+		<version>1.1.1</version>
+	</dependency>
+	<dependency>
+		<groupId>commons-io</groupId>
+		<artifactId>commons-io</artifactId>
+		<version>2.4</version>
+	</dependency>
+	<dependency>
+		<groupId>commons-lang</groupId>
+		<artifactId>commons-lang</artifactId>
+		<version>2.6</version>
+	</dependency>
+            
+  </dependencies>
+  <build>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.codehaus.mojo</groupId>
+        		<artifactId>exec-maven-plugin</artifactId>
+        		<version>1.2.1</version>
+        		<executions>
+          			<execution>
+          				<goals>
+              				<goal>java</goal>
+            			</goals>
+            		</execution>
+        		</executions>
+        		<configuration>
+          			<mainClass>com.sujit.utils.xmlextractor.MainApp</mainClass>
+         			<arguments>
+           				<argument>C:\Users\sujitroy\Desktop\tribune_updated.xml</argument> <!-- source xml file -->
+           				<argument>C:\Users\sujitroy\Desktop\opt</argument> <!-- target folder  -->
+           				<argument>program</argument> <!-- Tag on which extraction needs to happen -->
+           				<argument>programs</argument> <!-- root tag name. final file will also have this root tag -->
+           				<argument>5000</argument> <!-- max count limit -->
+           			</arguments>
+           		</configuration>
+  		</plugin>
+  		<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                        <source>1.5</source>
+                        <target>1.5</target>
+                </configuration>
+        </plugin>
+  	</plugins>
+  </build>
+</project>
