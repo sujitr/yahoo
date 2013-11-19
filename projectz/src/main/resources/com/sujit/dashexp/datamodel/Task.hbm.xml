@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.sujit.dashexp.datamodel">
+	<class name="Task" table="TASKS">
+        <id name="taskId" column="TASK_ID">
+            <generator class="native"/>
+        </id>
+        <property name="userId" type="string" column="TASK_USER"/>
+        <property name="taskTitle" type="string" column="TASK_TITLE"/>
+        <property name="taskCreationDate" type="timestamp" column="TASK_CREATION_DATE"/>
+        <property name="taskPriority" type="integer" column="TASK_PRIORITY"/>
+        <property name="taskStatus" type="string" column="TASK_STATUS"/>
+        <property name="taskBugId" type="long" column="TASK_BUGID"/>
+        <property name="taskDescription" type="string" column="TASK_DESCRIPTION"/>
+        <property name="taskLastUpdated" type="timestamp" column="TASK_LASTUPDATED"></property>
+        <property name="taskPriorityBugzilla" type="string" column="TASK_PRIORITY_BUGZILLA"/>
+	<property name="taskDueDate" type="string" column="TASK_DUE_DATE"/>
+    </class>
+</hibernate-mapping>

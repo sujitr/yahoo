@@ -1,0 +1,442 @@
+/*C1*/SET SCHEMA PUBLIC
+CONNECT USER SA
+SET AUTOCOMMIT FALSE
+SET AUTOCOMMIT TRUE
+SET AUTOCOMMIT FALSE
+INSERT INTO TASKS VALUES(798,'sakshat','Tms Mapping Analysis','2013-10-08 11:35:13.632000000',10,'Initiated',0,'Details not added yet for this task!','2013-10-08 11:35:13.632000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=798
+INSERT INTO TASKS VALUES(798,'sakshat','Tms Mapping Analysis','2013-10-08 11:35:13.632000000',10,'Initiated',0,'Analysis of mapping between tribune Ids(Show,Episode and Movie) and Baseline provider Id,provided by tribune in Connector XML.\r\nThis analysis consists of finding whether the mapping between the Tribune Ids(Show,Episode and Movie) is consistent with the corresponding Provider Id of Baseline.','2013-10-08 11:38:01.575000000',NULL,'')
+COMMIT
+INSERT INTO TASKS VALUES(799,'smeghana','[Photo WF] - Tribune photo ingestion','2013-10-08 11:51:50.950000000',10,'Initiated',6578871,'Details not added yet for this task!','2013-10-08 11:51:50.950000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=791
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=792
+INSERT INTO TASKS VALUES(792,'smeghana','Code Change to support Multiple Poster','2013-10-01 10:44:48.449000000',10,'Done',0,'Complete the Code Changes.\r\nPebl version - pebl_photoCcmSchemaGeneration-1.6\r\nWf Version - http://dist.corp.yahoo.com/version_info.php/by-package/grid_media_photo_workflow/grid_media_photo_workflow-1.5.32-rhel-4.x.html\r\n','2013-10-08 11:52:06.356000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=797
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=799
+INSERT INTO TASKS VALUES(799,'smeghana','[Photo WF] - Tribune photo ingestion','2013-10-08 11:51:50.950000000',10,'In-progress',6578871,'Create TestCase and XSLT for tribune','2013-10-08 11:52:31.352000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=799
+INSERT INTO TASKS VALUES(799,'smeghana','[Photo WF] - Tribune photo ingestion','2013-10-08 11:51:50.950000000',10,'In-progress',6578871,'Create TestCase and XSLT for tribune using new CCMGeneration Code.','2013-10-08 11:52:43.687000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=799
+INSERT INTO TASKS VALUES(799,'smeghana','[Photo WF] - Tribune photo ingestion','2013-10-08 11:51:50.950000000',10,'In-progress',6578871,'Create TestCase and XSLT(new format) for tribune using new CCMGeneration Code.\r\n','2013-10-08 11:53:48.619000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=794
+INSERT INTO TASKS VALUES(794,'sujitroy','Disambiguation evaluation for Episodes','2013-10-01 14:47:17.810000000',10,'In-progress',0,'Added the LOG statements at the appropriate places with Ashwin''s help. That would positively determine if the disambiguation is successful or not. \r\nRunning the soln-stage tv_episode ccm''s once again for a proper count this time.','2013-10-08 15:14:14.305000000',NULL,'')
+COMMIT
+INSERT INTO TASKS VALUES(800,'sujitroy','Fine tune the ace test cases for tribune partners (for unit tests)','2013-10-08 15:14:47.053000000',10,'Initiated',0,'Details not added yet for this task!','2013-10-08 15:14:47.053000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=800
+COMMIT
+INSERT INTO TASKS VALUES(801,'sujitroy','[Tribune TV] - Fine tune the ace test cases for tribune partners (for unit tests)','2013-10-08 16:48:06.729000000',10,'Initiated',6581940,'Details not added yet for this task!','2013-10-08 16:48:06.729000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=794
+INSERT INTO TASKS VALUES(794,'sujitroy','Disambiguation evaluation for Episodes','2013-10-01 14:47:17.810000000',10,'Done',0,'Added the LOG statements at the appropriate places with Ashwin''s help. That would positively determine if the disambiguation is successful or not. \r\nRan the soln-stage tv_episode ccm''s once again for a proper count. Results are - \r\n    Number of episode entities tested = 2892\r\n    Number of episode entities successfully disambiguated = 762\r\n    Number of episode entities did not made past the threshold score = 2129\r\n    Number of episode entities failed to be disambiguated (no candidates at all) = 1\r\n    %''age of episde entities disambiguated successfully = 26.35%\r\n','2013-10-09 13:53:49.486000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=795
+INSERT INTO TASKS VALUES(795,'sujitroy','Disambiguation evaluation for Shows','2013-10-01 14:47:27.143000000',10,'In-progress',0,'Details not added yet for this task!','2013-10-09 13:54:10.271000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=796
+COMMIT
+INSERT INTO TASKS VALUES(802,'deeptir','updated google doc for pacman workflow related info','2013-10-10 13:57:26.978000000',10,'Initiated',0,'Details not added yet for this task!','2013-10-10 13:57:26.978000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=802
+INSERT INTO TASKS VALUES(802,'deeptir','updated google doc for pacman workflow related info','2013-10-10 13:57:26.978000000',10,'Done',0,'Details not added yet for this task!','2013-10-10 13:57:34.815000000',NULL,'')
+COMMIT
+INSERT INTO TASKS VALUES(803,'sujitroy','[Tribune ] - Legacy Id Mapper Workflow','2013-10-10 16:18:21.928000000',10,'Initiated',6586902,'Details not added yet for this task!','2013-10-10 16:18:21.928000000','P3','')
+COMMIT
+INSERT INTO TASKS VALUES(804,'sujitroy','[Tribune TV] - Addition of "original_release_year" in episode and show partners','2013-10-10 16:56:27.215000000',10,'Initiated',6587325,'Details not added yet for this task!','2013-10-10 16:56:27.215000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=803
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=792
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=799
+INSERT INTO TASKS VALUES(799,'smeghana','[Photo WF] - Tribune photo ingestion','2013-10-08 11:51:50.950000000',10,'Done',6578871,'Created Atrifacts for Tribune Show Poster images.\r\n1) Sample :\r\nhttp://japi1.qa1.global.media.yahoo.com:4080/media_common_api/v1/object/dbc6c537-d034-33ff-8dd8-15508b890c36?format=json\r\nhttp://japi1.qa1.global.media.yahoo.com:4080/media_common_api/v1/object/17e2752e-0c5f-3c08-9398-0025c1cf4a9b?format=json\r\n\r\n2) License : Ingested the License Object in stage(same as prod object) using proxy buffer.\r\nhttp://japi1.qa1.global.media.yahoo.com:4080/media_common_api/v1/object/7e87988b-be2f-3ea1-b986-3e5ce9a4c681?format=json','2013-10-15 10:04:12.951000000','P3','')
+COMMIT
+INSERT INTO TASKS VALUES(805,'smeghana','ToDo','2013-10-15 10:04:25.608000000',10,'Initiated',0,'Details not added yet for this task!','2013-10-15 10:04:25.608000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=805
+INSERT INTO TASKS VALUES(805,'smeghana','ToDo','2013-10-15 10:04:25.608000000',10,'Initiated',0,'Workflow doesn''t have attributes required to pick compressed files.\r\n1) Add the message.uncompress attribute in harvestorplugin PEBL\r\n2) Create new patch version of Photo WF\r\n3) Deploy and test the Tribune Posters.','2013-10-15 10:06:02.360000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=805
+INSERT INTO TASKS VALUES(805,'smeghana','ToDo','2013-10-15 10:04:25.608000000',10,'Initiated',0,'Workflow doesn''t have attributes required to pick compressed files.\r\n1) Add the message.uncompress attribute in harvestorplugin PEBL\r\n2) Create new patch version of Photo WF (1.5.32.1)\r\n3) Deploy and test the Tribune Posters.','2013-10-15 10:06:25.169000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=805
+INSERT INTO TASKS VALUES(805,'smeghana','ToDo','2013-10-15 10:04:25.608000000',10,'Initiated',0,'1) Workflow doesn''t have attributes required to pick compressed files.\r\ni) Add the message.uncompress attribute in harvestorplugin PEBL\r\nii) Create new patch version of Photo WF (1.5.32.1)\r\niii) Deploy and test the Tribune Posters.\r\n\r\n2) Fix the Workflow Failure on some testcases.\r\n','2013-10-15 10:08:16.985000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=794
+INSERT INTO TASKS VALUES(794,'sujitroy','Disambiguation evaluation for Episodes','2013-10-01 14:47:17.810000000',10,'Done',0,'Added the LOG statements at the appropriate places with Ashwin''s help. That would positively determine if the disambiguation is successful or not. \r\nRan the soln-stage tv_episode ccm''s once again for a proper count. Results are - \r\n    Number of episode entities tested = 2892\r\n    Number of episode entities successfully disambiguated = 762\r\n    Number of episode entities did not made past the threshold score = 2129\r\n    Number of episode entities failed to be disambiguated (no candidates at all) = 1\r\n    %''age of episde entities disambiguated successfully = 26.35%\r\nWith 5000 entries the percentage is even lower at 0.85%\r\n','2013-10-16 17:09:04.243000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=795
+INSERT INTO TASKS VALUES(795,'sujitroy','Disambiguation evaluation for Shows','2013-10-01 14:47:27.143000000',10,'In-progress',0,'35-40% success rate on average. Below par limit.','2013-10-16 17:09:45.403000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=801
+INSERT INTO TASKS VALUES(801,'sujitroy','[Tribune TV] - Fine tune the ace test cases for tribune partners (for unit tests)','2013-10-08 16:48:06.729000000',10,'Almost',6581940,'Details not added yet for this task!','2013-10-16 17:09:54.099000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=804
+INSERT INTO TASKS VALUES(804,'sujitroy','[Tribune TV] - Addition of "original_release_year" in episode and show partners','2013-10-10 16:56:27.215000000',10,'Done',6587325,'Need to close this bug.','2013-10-17 08:59:31.378000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=794
+INSERT INTO TASKS VALUES(794,'sujitroy','Disambiguation evaluation for Episodes','2013-10-01 14:47:17.810000000',10,'Done',0,'Since the episode names are formed with ''Episode +<tmsid>'' in those cases where there are no episode titles, this is significantly reducing the SSBE matches.','2013-10-17 09:00:45.140000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=804
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=785
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=782
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=793
+COMMIT
+INSERT INTO TASKS VALUES(806,'sujitroy','[Tribune TV] - construct the episode title in the following format \u2013 Show title - "Season" <season number> - "Episode" <episode number>','2013-10-17 10:34:01.519000000',10,'Initiated',6598913,'Details not added yet for this task!','2013-10-17 10:34:01.519000000','P3','')
+COMMIT
+INSERT INTO TASKS VALUES(807,'sujitroy','[Tribune TV] - rectify episode and show XSLT''s to check for creation of empty credit facets','2013-10-17 10:34:01.520000000',10,'Initiated',6598923,'Details not added yet for this task!','2013-10-17 10:34:01.520000000','P3','')
+COMMIT
+INSERT INTO TASKS VALUES(808,'sakshat','[Tribune ] - Legacy Id Mapper Workflow','2013-10-17 12:32:15.356000000',10,'Initiated',6586902,'Details not added yet for this task!','2013-10-17 12:32:15.356000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=806
+INSERT INTO TASKS VALUES(806,'sujitroy','[Tribune TV] - construct the episode title in the following format ? Show title - "Season" &lt;season number&gt; - "Episode" &lt;episode number&gt;','2013-10-17 10:34:01.519000000',10,'Done',6598913,'Details not added yet for this task!','2013-10-17 12:35:02.782000000','P3','')
+COMMIT
+INSERT INTO TASKS VALUES(809,'deeptir','FeedToCCM tool: take xsl and xml as input and get the required ccm as output','2013-10-17 12:53:09.047000000',10,'Initiated',0,'Details not added yet for this task!','2013-10-17 12:53:09.047000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=809
+INSERT INTO TASKS VALUES(809,'deeptir','FeedToCCM tool: take xsl and xml as input and get the required ccm as output','2013-10-17 12:53:09.047000000',10,'In-progress',0,'1) Understanding of pebls required for the tool.\r\n2)Taking input as attribute values of pebl in pacman-workflow.xml\r\n','2013-10-17 12:55:02.526000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=806
+INSERT INTO TASKS VALUES(806,'sujitroy','[Tribune TV] - construct the episode title in the following format \u2013 Show title - "Season" <season number> - "Episode" <episode number>','2013-10-17 10:34:01.519000000',10,'Done',6598913,'Details not added yet for this task!','2013-10-17 14:21:40.537000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=807
+INSERT INTO TASKS VALUES(807,'sujitroy','[Tribune TV] - rectify episode and show XSLT''s to check for creation of empty credit facets','2013-10-17 10:34:01.520000000',10,'Done',6598923,'Updated the XSLT''s for episodes and shows.','2013-10-17 14:34:09.783000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=795
+INSERT INTO TASKS VALUES(795,'sujitroy','Disambiguation evaluation for Shows','2013-10-01 14:47:27.143000000',10,'Done',0,'35-40% success rate on average. Below par limit.','2013-10-17 14:35:28.105000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=794
+INSERT INTO TASKS VALUES(794,'sujitroy','Disambiguation evaluation for Episodes','2013-10-01 14:47:17.810000000',10,'In-progress',0,'Since the episode names are formed with ''Episode +<tmsid>'' in those cases where there are no episode titles, this is significantly reducing the SSBE matches. \r\nUpdated the XSLT for episodes for a more meaningful title creation with show title and episode number (wherever available).','2013-10-17 14:36:36.094000000',NULL,'')
+COMMIT
+INSERT INTO TASKS VALUES(810,'sujitroy','[Tribune TV] - Facet Schema Design for Sporting Events','2013-10-17 17:09:56.169000000',10,'Initiated',6546433,'Details not added yet for this task!','2013-10-17 17:09:56.169000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=810
+INSERT INTO TASKS VALUES(810,'sujitroy','[Tribune TV] - Facet Schema Design for Sporting Events','2013-10-17 17:09:56.169000000',10,'Initiated',6546433,'review comments update','2013-10-17 17:10:08.415000000','P3','')
+COMMIT
+INSERT INTO TASKS VALUES(811,'smeghana','[Photo WF] - Tribune photo ingestion','2013-10-22 11:08:59.443000000',10,'Initiated',6604364,'Details not added yet for this task!','2013-10-22 11:08:59.443000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=799
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=811
+INSERT INTO TASKS VALUES(811,'smeghana','[Photo WF] - Tribune photo ingestion','2013-10-22 11:08:59.443000000',10,'Initiated',6604364,'Modifications to Poster images:\r\n1) use root Id to form another alt-src\r\n2) use profile as category for vertical and poster for horizontal','2013-10-22 11:10:20.323000000','P3','')
+COMMIT
+INSERT INTO TASKS VALUES(812,'smeghana','Workflwo Fix','2013-10-22 11:20:30.140000000',10,'Initiated',0,'Details not added yet for this task!','2013-10-22 11:20:30.140000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=812
+INSERT INTO TASKS VALUES(812,'smeghana','Workflow Fix','2013-10-22 11:20:30.140000000',10,'Done',0,'1) Fixed the Workflow Failures.\r\n2) Added the attributes for processing compressed files and tested with a sample feed.','2013-10-22 11:21:35.172000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=805
+INSERT INTO TASKS VALUES(805,'smeghana','ToDo','2013-10-15 10:04:25.608000000',10,'Initiated',0,'1) Ingest Iconics, movieposter adn tvstations images.\r\n2) Yet to receive input  for poster and station images.','2013-10-22 11:22:37.353000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=812
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=811
+INSERT INTO TASKS VALUES(811,'smeghana','[Photo WF] - Tribune photo ingestion','2013-10-22 11:08:59.443000000',10,'Done',6604364,'Modifications to Poster images:\r\n1) use root Id to form another alt-src\r\n2) use profile as category for vertical and poster for horizontal','2013-10-29 10:05:17.956000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=805
+INSERT INTO TASKS VALUES(805,'smeghana','ToDo','2013-10-15 10:04:25.608000000',10,'Initiated',0,'1) Ingest Iconics, movieposter adn tvstations images.\r\n','2013-10-29 10:05:32.757000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=794
+INSERT INTO TASKS VALUES(794,'sujitroy','Disambiguation evaluation for Episodes','2013-10-01 14:47:17.810000000',10,'In-progress',0,'Since the episode names are formed with ''Episode +<tmsid>'' in those cases where there are no episode titles, this is significantly reducing the SSBE matches. \r\nUpdated the XSLT for episodes for a more meaningful title creation with show title and episode number (wherever available).\r\nAlso, updated the entity_proc_lib with a new code segment specially for US TV''s which will give greater significance on show title, episode number and season name match. This still needs fine tuning especially with the weight-age and threshold limits so that the changes can satisfy all the previous unit tests.','2013-10-29 11:48:10.121000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=795
+INSERT INTO TASKS VALUES(795,'sujitroy','Disambiguation evaluation for Shows','2013-10-01 14:47:27.143000000',10,'Done',0,'35-40% success rate on average. Below par limit. This is mostly because the dataset used for show disambiguation against the production SSBE has shows which are predominantly before 1980 era or that show does not exist in Yahoo systems (e.g. 100 Huntley Street)','2013-10-29 11:50:36.902000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=806
+INSERT INTO TASKS VALUES(806,'sujitroy','[Tribune TV] - construct the episode title in the following format ? Show title - "Season" &lt;season number&gt; - "Episode" &lt;episode number&gt;','2013-10-17 10:34:01.519000000',10,'Done',6598913,'Updated the XSLT with changes to construct the episode title in case the actual title is missing. This is to aid disambiguation.','2013-10-29 11:51:31.442000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=806
+INSERT INTO TASKS VALUES(806,'sujitroy','[Tribune TV] - construct the episode title in the following format \u2013 Show title - "Season" <season number> - "Episode" <episode number>','2013-10-17 10:34:01.519000000',10,'Done',6598913,'Updated the XSLT with changes to construct the episode title in case the actual title is missing. This is to aid disambiguation.','2013-10-30 16:23:26.832000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=810
+INSERT INTO TASKS VALUES(810,'sujitroy','[Tribune TV] - Facet Schema Design for Sporting Events','2013-10-17 17:09:56.169000000',10,'Initiated',6546433,'Need to add content_type','2013-10-30 16:23:50.942000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=806
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=801
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=807
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=794
+INSERT INTO TASKS VALUES(794,'sujitroy','Disambiguation evaluation for Episodes','2013-10-01 14:47:17.810000000',10,'In-progress',0,'Since the episode names are formed with ''Episode +<tmsid>'' in those cases where there are no episode titles, this is significantly reducing the SSBE matches. \r\nUpdated the XSLT for episodes for a more meaningful title creation with show title and episode number (wherever available).\r\nAlso, updated the entity_proc_lib with a new code segment specially for US TV''s which will give greater significance on show title, episode number and season name match. ','2013-11-05 10:33:55.877000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=794
+INSERT INTO TASKS VALUES(794,'sujitroy','Disambiguation evaluation for Episodes','2013-10-01 14:47:17.810000000',10,'In-progress',0,'fine tuned entity_proc_lib with a new code segment specially for US TV Episodes which will give greater significance on show title, episode number and season name match. \r\nWith the latest data set of 6000 episodes whose air date was post 2000, the disambiguation evaluation gave a result of about 13% success rate.','2013-11-05 10:35:22.433000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=810
+COMMIT
+INSERT INTO TASKS VALUES(813,'sakshat','[Tribune ] -Global-tv-entities-workflow and Global-movie-entites workflow XSLT Updation','2013-11-05 12:21:46.532000000',10,'Initiated',6601752,'Details not added yet for this task!','2013-11-05 12:21:46.532000000','P3','')
+COMMIT
+INSERT INTO TASKS VALUES(814,'sakshat','[Tribune ] - global-tv-entites workflow XSLT and configuration file Updation','2013-11-05 12:21:46.533000000',10,'Initiated',6607693,'Details not added yet for this task!','2013-11-05 12:21:46.533000000','P3','')
+COMMIT
+INSERT INTO TASKS VALUES(815,'sakshat','Code change Legacy Id Mapper','2013-11-05 12:23:05.293000000',10,'Initiated',0,'Details not added yet for this task!','2013-11-05 12:23:05.293000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=795
+INSERT INTO TASKS VALUES(795,'sujitroy','Disambiguation evaluation for Shows','2013-10-01 14:47:27.143000000',10,'Done',0,'Tried the evaluation again with a new dataset which contained shows with airdate post 2000. This dataset was originally meant to contain 6000 shows, but post stage ingestion ccm''s were generated for 2000 shows. And then the evaluation showed a disambiguation rate of 6%. ','2013-11-05 12:23:56.036000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=815
+INSERT INTO TASKS VALUES(815,'sakshat','Code change Legacy Id Mapper','2013-11-05 12:23:05.293000000',10,'Initiated',0,'Updated the code of Legacy Id Mapper pebl to make the response reading field configurable.\r\nDisted and deployed the same.\r\n','2013-11-05 12:24:49.447000000',NULL,'')
+COMMIT
+INSERT INTO TASKS VALUES(816,'sakshat','Workflow Deployment','2013-11-05 12:25:04.141000000',10,'Initiated',0,'Details not added yet for this task!','2013-11-05 12:25:04.141000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=795
+INSERT INTO TASKS VALUES(795,'sujitroy','Disambiguation evaluation for Shows','2013-10-01 14:47:27.143000000',10,'Done',0,'Tried the evaluation again with a new dataset which contained shows with airdate post 2000. This dataset was originally meant to contain 6000 shows, but post stage ingestion ccm''s were generated for 2000 shows. And then the evaluation showed a disambiguation rate of 6%. This was mostly due to show title or airdate mismatch with the SSBE data.','2013-11-05 12:26:24.618000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=816
+INSERT INTO TASKS VALUES(816,'sakshat','Workflow Deployment','2013-11-05 12:25:04.141000000',10,'Initiated',0,'Updated global-movie-entities workflow with the new version of Legacy Id Mapper pebl.\r\nDisted and deployed the same.\r\nTested global-movie-entities workflow in soln-stage for proper functioning of Legacy Id Mapper Pebl and CCM generation.','2013-11-05 12:26:54.743000000',NULL,'')
+COMMIT
+INSERT INTO TASKS VALUES(817,'sakshat','Feed Ingestion','2013-11-05 12:27:04.542000000',10,'Initiated',0,'Details not added yet for this task!','2013-11-05 12:27:04.542000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=817
+INSERT INTO TASKS VALUES(817,'sakshat','Feed Ingestion','2013-11-05 12:27:04.542000000',10,'Initiated',0,'Ingested Tribune TV Show,Episode and Movie full feed in soln-stage.','2013-11-05 12:27:55.204000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=794
+INSERT INTO TASKS VALUES(794,'sujitroy','Disambiguation evaluation for Episodes','2013-10-01 14:47:17.810000000',10,'Done',0,'fine tuned entity_proc_lib with a new code segment specially for US TV Episodes which will give greater significance on show title, episode number and season name match. \r\nWith the latest data set of 6000 episodes whose air date was post 2000, the disambiguation evaluation gave a result of about 13% success rate.','2013-11-05 12:27:55.733000000',NULL,'')
+COMMIT
+DELETE FROM SCHEDULES WHERE USER='sujitroy'
+INSERT INTO SCHEDULES VALUES('sujitroy',TRUE,'sujitroy@yahoo-inc.com','sakshat@yahoo-inc.com,smeghana@yahoo-inc.com,deeptir@yahoo-inc.com','auto-mailer@yahoo-inc.com','Weekly Report - auto send testbed','tuesday','12:30pm',FALSE,'',TRUE)
+COMMIT
+DELETE FROM SCHEDULES WHERE USER='sujitroy'
+INSERT INTO SCHEDULES VALUES('sujitroy',TRUE,'sujitroy@yahoo-inc.com','sakshat@yahoo-inc.com,smeghana@yahoo-inc.com','auto-mailer@yahoo-inc.com','Weekly Report - auto send testbed','tuesday','1:00pm',FALSE,'',TRUE)
+COMMIT
+DELETE FROM SCHEDULES WHERE USER='sujitroy'
+INSERT INTO SCHEDULES VALUES('sujitroy',TRUE,'sujitroy@yahoo-inc.com','sakshat@yahoo-inc.com,smeghana@yahoo-inc.com','auto-mailer@yahoo-inc.com','Weekly Report - auto send testbed','tuesday','1:00pm',FALSE,'',TRUE)
+COMMIT
+DELETE FROM SCHEDULES WHERE USER='sujitroy'
+INSERT INTO SCHEDULES VALUES('sujitroy',TRUE,'sujitroy@yahoo-inc.com','sakshat@yahoo-inc.com,smeghana@yahoo-inc.com','auto-mailer@yahoo-inc.com','Weekly Report - auto send testbed','tuesday','1:00pm',FALSE,'',TRUE)
+COMMIT
+INSERT INTO TASKS VALUES(818,'sujitroy','[Tribune TV] - Facet Schema Design for Sporting Events','2013-11-05 12:59:42.590000000',10,'Initiated',6546433,'Details not added yet for this task!','2013-11-05 12:59:42.590000000','P3','')
+COMMIT
+DELETE FROM SCHEDULES WHERE USER='sujitroy'
+INSERT INTO SCHEDULES VALUES('sujitroy',TRUE,'sujitroy@yahoo-inc.com','sakshat@yahoo-inc.com,smeghana@yahoo-inc.com','auto-mailer@yahoo-inc.com','Weekly Report - auto send testbed','tuesday','1:00pm',FALSE,'',TRUE)
+COMMIT
+DELETE FROM SCHEDULES WHERE USER='sujitroy'
+INSERT INTO SCHEDULES VALUES('sujitroy',TRUE,'sujitroy@yahoo-inc.com','sakshat@yahoo-inc.com,smeghana@yahoo-inc.com','auto-mailer@yahoo-inc.com','Weekly Report - auto send testbed','tuesday','12:30pm',FALSE,'',TRUE)
+COMMIT
+DELETE FROM SCHEDULES WHERE USER='sujitroy'
+INSERT INTO SCHEDULES VALUES('sujitroy',TRUE,'sujitroy@yahoo-inc.com','sakshat@yahoo-inc.com,smeghana@yahoo-inc.com','auto-mailer@yahoo-inc.com','Weekly Report - auto send testbed','tuesday','12:30pm',FALSE,'',TRUE)
+COMMIT
+DELETE FROM SCHEDULES WHERE USER='sujitroy'
+INSERT INTO SCHEDULES VALUES('sujitroy',TRUE,'sujitroy@yahoo-inc.com','sakshat@yahoo-inc.com,smeghana@yahoo-inc.com','auto-mailer@yahoo-inc.com','Weekly Report - auto send testbed','tuesday','12:30pm',FALSE,'',TRUE)
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=818
+COMMIT
+INSERT INTO TASKS VALUES(819,'sujitroy','Implement the Rating for TV Episode and Shows for Tribune','2013-11-05 14:39:25.324000000',10,'Initiated',0,'Details not added yet for this task!','2013-11-05 14:39:25.324000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=819
+INSERT INTO TASKS VALUES(819,'sujitroy','Implement the Rating for TV Episode and Shows for Tribune','2013-11-05 14:39:25.324000000',10,'Initiated',0,'Check out the new set of feeds for rating related details and add them the XSLT','2013-11-05 14:40:08.589000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=819
+COMMIT
+INSERT INTO TASKS VALUES(820,'sujitroy','[Tribune TV] - Add tribune:tv_rating facet for shows, episodes and movies','2013-11-08 11:22:21.690000000',10,'Initiated',6637704,'Details not added yet for this task!','2013-11-08 11:22:21.690000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=786
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=820
+INSERT INTO TASKS VALUES(820,'sujitroy','[Tribune TV] - Add tribune:tv_rating facet for shows, episodes and movies','2013-11-08 11:22:21.690000000',10,'Done',6637704,'Details not added yet for this task!','2013-11-08 11:22:26.738000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=820
+INSERT INTO TASKS VALUES(820,'sujitroy','[Tribune TV] - Add tribune:tv_rating facet for shows, episodes and movies','2013-11-08 11:22:21.690000000',10,'Done',6637704,'Details not added yet for this task!','2013-11-08 14:18:17.204000000','P3','08/11/2013')
+COMMIT
+INSERT INTO TASKS VALUES(821,'kani','[Update All Workflows] Config changes in IBPost PEBL','2013-11-11 12:50:32.856000000',10,'Initiated',6297722,'Details not added yet for this task!','2013-11-11 12:50:32.856000000','--','')
+COMMIT
+INSERT INTO TASKS VALUES(822,'smeghana','[Tribune] -Ingest largest images','2013-11-12 10:05:34.268000000',10,'Initiated',6622485,'Details not added yet for this task!','2013-11-12 10:05:34.268000000','P3','')
+COMMIT
+INSERT INTO TASKS VALUES(823,'smeghana','[Tribune] - Modify ImageDownloader PEBL','2013-11-12 10:05:34.269000000',10,'Initiated',6633793,'Details not added yet for this task!','2013-11-12 10:05:34.269000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=811
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=823
+INSERT INTO TASKS VALUES(823,'smeghana','[Tribune] - Modify ImageDownloader PEBL','2013-11-12 10:05:34.269000000',10,'Done',6633793,'Details not added yet for this task!','2013-11-12 10:05:58.687000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=823
+INSERT INTO TASKS VALUES(823,'smeghana','[Tribune] - Modify ImageDownloader PEBL','2013-11-12 10:05:34.269000000',10,'Done',6633793,'1) If the images do not have contenttype in metadata, then the image is discarded. Modify the pebl to pick content type from filename if it is missing in image header.','2013-11-12 10:07:15.664000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=805
+INSERT INTO TASKS VALUES(805,'smeghana','ToDo','2013-10-15 10:04:25.608000000',10,'Initiated',0,'1) Compare showcards file to rest of the files - compare the structure\r\n2) Add 2 Pebls to group the data depending on some criteria and ingest only the  largest image. Discard rest of the images.\r\n    2.1) Implement RecordGrouper interface for grouping based on show title.\r\n    2.2) Implement RecordGroupProcessor interface to identify the largest image from batch of images of a particular show. ','2013-11-12 10:09:49.768000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=820
+INSERT INTO TASKS VALUES(820,'sujitroy','[Tribune TV] - Add tribune:tv_rating facet for shows, episodes and movies','2013-11-08 11:22:21.690000000',10,'Done',6637704,'Added rating facet for Tribune TV Shows, Episodes and Movies','2013-11-12 12:04:21.736000000','P3','08/11/2013')
+COMMIT
+INSERT INTO TASKS VALUES(824,'sujitroy','Find a show from baseline and tribune which has data mismatch','2013-11-12 12:07:20.334000000',10,'Initiated',0,'Details not added yet for this task!','2013-11-12 12:07:20.334000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=824
+INSERT INTO TASKS VALUES(824,'sujitroy','Find a show from baseline and tribune which has data mismatch','2013-11-12 12:07:20.334000000',10,'Initiated',0,'Many of the episodes in tribune does not have episode and season number. We needed to find a proof which will highlight shows which has episode number & season numbers in baseline but not in tribune. This is one of the key results which drastically reduces the disambiguation match percentage. Filtered out 10 such episodes from the both the feeds for the show ''20/20''','2013-11-12 12:09:46.799000000',NULL,'')
+COMMIT
+INSERT INTO TASKS VALUES(825,'sujitroy','Tribune Episodes detailed analysis','2013-11-12 12:10:27.469000000',10,'Initiated',0,'Details not added yet for this task!','2013-11-12 12:10:27.469000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=825
+INSERT INTO TASKS VALUES(825,'sujitroy','Tribune Episodes detailed analysis','2013-11-12 12:10:27.469000000',10,'Initiated',0,'Script to go through the tribune episodes full feed and create a detailed report/demographics on the statistics of episode number/season number/air-date for the shows.','2013-11-12 12:11:52.078000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=825
+INSERT INTO TASKS VALUES(825,'sujitroy','Tribune Episode Full Feed -  detailed analysis','2013-11-12 12:10:27.469000000',10,'Initiated',0,'Script to go through the tribune episodes full feed and create a detailed report/demographics on the statistics of episode number/season number/air-date for the shows.','2013-11-12 12:12:04.266000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=825
+INSERT INTO TASKS VALUES(825,'sujitroy','Tribune Episode Full Feed -  detailed analysis','2013-11-12 12:10:27.469000000',10,'Initiated',0,'Working on a script to go through the tribune episodes full feed and create a detailed report/demographics on the statistics of episode number/season number/air-date for the shows.','2013-11-12 12:12:15.019000000',NULL,'')
+COMMIT
+DELETE FROM SCHEDULES WHERE USER='sujitroy'
+INSERT INTO SCHEDULES VALUES('sujitroy',TRUE,'sujitroy@yahoo-inc.com','sakshat@yahoo-inc.com,smeghana@yahoo-inc.com','auto-mailer@yahoo-inc.com','Weekly Report - auto send testbed','tuesday','12:30pm',FALSE,'',TRUE)
+COMMIT
+DELETE FROM SCHEDULES WHERE USER='sujitroy'
+INSERT INTO SCHEDULES VALUES('sujitroy',TRUE,'sujitroy@yahoo-inc.com','sakshat@yahoo-inc.com,smeghana@yahoo-inc.com','auto-mailer@yahoo-inc.com','Weekly Report','tuesday','12:30pm',FALSE,'',TRUE)
+COMMIT
+DELETE FROM SCHEDULES WHERE USER='sujitroy'
+INSERT INTO SCHEDULES VALUES('sujitroy',TRUE,'sujitroy@yahoo-inc.com','sakshat@yahoo-inc.com,smeghana@yahoo-inc.com','auto-mailer@yahoo-inc.com','Weekly Report','tuesday','12:30pm',FALSE,'',TRUE)
+COMMIT
+DELETE FROM SCHEDULES WHERE USER='sujitroy'
+INSERT INTO SCHEDULES VALUES('sujitroy',TRUE,'sujitroy@yahoo-inc.com','sakshat@yahoo-inc.com,smeghana@yahoo-inc.com','auto-mailer@yahoo-inc.com','Weekly Report','tuesday','12:30pm',FALSE,'',TRUE)
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=822
+INSERT INTO TASKS VALUES(822,'smeghana','[Tribune] -Ingest largest images','2013-11-12 10:05:34.268000000',10,'Initiated',6622485,'1) Compare showcards file to rest of the files - compare the structure\r\n2) Add 2 Pebls to group the data depending on some criteria and ingest only the  largest image. Discard rest of the images.\r\n    2.1) Implement RecordGrouper interface for grouping based on show title.\r\n    2.2) Implement RecordGroupProcessor interface to identify the largest image from batch of images of a particular show. ','2013-11-12 12:14:47.394000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=805
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=817
+INSERT INTO TASKS VALUES(817,'sakshat','Feed Ingestion','2013-11-05 12:27:04.542000000',10,'Initiated',0,'Ingested Tribune TV Show,Episode and Movie full feed in soln-stage.\r\nDeployed new Tipsy based workflow in Swami for Movie,Show and episode partners.\r\nChanged the sherpa host for the same,along with ingestion of the feeds.','2013-11-12 12:15:02.509000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=822
+INSERT INTO TASKS VALUES(822,'smeghana','[Tribune] -Ingest largest images','2013-11-12 10:05:34.268000000',10,'Initiated',6622485,'1) Compare showcards file to rest of the files - compare the structure\r\n2) Add 2 Pebls to group the data depending on some criteria and ingest only the  largest image. Discard rest of the images.\r\n    2.0) RnD on Recordgrouper and RecordGroupProcessor Interfaces\r\n    2.1) Implement RecordGrouper interface for grouping based on show title.\r\n    2.2) Implement RecordGroupProcessor interface to identify the largest image from batch of images of a particular show. ','2013-11-12 12:15:39.264000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=814
+INSERT INTO TASKS VALUES(814,'sakshat','[Tribune ] - global-tv-entites workflow XSLT and configuration file Updation','2013-11-05 12:21:46.533000000',10,'Initiated',6607693,'Updated the Tribune Movie XSLT for credit group normalization logic.','2013-11-12 12:16:19.086000000','P3','')
+COMMIT
+INSERT INTO TASKS VALUES(826,'sakshat','VOD XSLT creation','2013-11-12 12:16:35.142000000',10,'Initiated',0,'Details not added yet for this task!','2013-11-12 12:16:35.142000000',NULL,'')
+COMMIT
+DELETE FROM SCHEDULES WHERE USER='sujitroy'
+INSERT INTO SCHEDULES VALUES('sujitroy',TRUE,'sujitroy@yahoo-inc.com','sakshat@yahoo-inc.com,smeghana@yahoo-inc.com','auto-mailer@yahoo-inc.com','Weekly Report','tuesday','12:30pm',FALSE,'',TRUE)
+COMMIT
+DELETE FROM SCHEDULES WHERE USER='sujitroy'
+INSERT INTO SCHEDULES VALUES('sujitroy',TRUE,'satyan@yahoo-inc.com,missula@yahoo-inc.com','sakshat@yahoo-inc.com,smeghana@yahoo-inc.com,kani@yahoo-inc.com,sujitroy@yahoo-inc.com','auto-mailer@yahoo-inc.com','Weekly Report','tuesday','12:30pm',FALSE,'',TRUE)
+COMMIT
+DELETE FROM SCHEDULES WHERE USER='sujitroy'
+INSERT INTO SCHEDULES VALUES('sujitroy',TRUE,'satyan@yahoo-inc.com,missula@yahoo-inc.com','sakshat@yahoo-inc.com,smeghana@yahoo-inc.com,kani@yahoo-inc.com,sujitroy@yahoo-inc.com','auto-mailer@yahoo-inc.com','Weekly Report','tuesday','12:30pm',FALSE,'',TRUE)
+COMMIT
+DELETE FROM SCHEDULES WHERE USER='sujitroy'
+INSERT INTO SCHEDULES VALUES('sujitroy',TRUE,'satyan@yahoo-inc.com,missula@yahoo-inc.com','sakshat@yahoo-inc.com,smeghana@yahoo-inc.com,kani@yahoo-inc.com,sujitroy@yahoo-inc.com','auto-mailer@yahoo-inc.com','Weekly Report','tuesday','12:30pm',FALSE,'',TRUE)
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=826
+INSERT INTO TASKS VALUES(826,'sakshat','VOD XSLT creation','2013-11-12 12:16:35.142000000',10,'Initiated',0,'Working on creation of XSLT for VOD.','2013-11-12 12:17:00.235000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=825
+INSERT INTO TASKS VALUES(825,'sujitroy','Tribune Episode Full Feed -  detailed analysis of statistics','2013-11-12 12:10:27.469000000',10,'Initiated',0,'Working on a script to go through the tribune episodes full feed and create a detailed report/demographics on the statistics of episode number/season number/air-date for the shows.','2013-11-12 12:18:23.003000000',NULL,'')
+COMMIT
+INSERT INTO TASKS VALUES(827,'rgokul','Video Task - Eurosport migration of preconverter logic','2013-11-12 17:02:35.178000000',10,'Initiated',5497745,'Details not added yet for this task!','2013-11-12 17:02:35.178000000','--','')
+COMMIT
+INSERT INTO TASKS VALUES(828,'rgokul','Test Ticket','2013-11-12 17:02:35.179000000',10,'Initiated',5503429,'Details not added yet for this task!','2013-11-12 17:02:35.179000000','--','')
+COMMIT
+INSERT INTO TASKS VALUES(829,'rgokul','Neher Validation framework should Cross-Check the generated CCM against the provider CCM','2013-11-12 17:02:35.180000000',10,'Initiated',5722637,'Details not added yet for this task!','2013-11-12 17:02:35.180000000','--','')
+COMMIT
+INSERT INTO TASKS VALUES(830,'rgokul','Neher Validation framework should Check thoroughly the Mojibake characters in the generated CCM','2013-11-12 17:02:35.180000000',10,'Initiated',5722656,'Details not added yet for this task!','2013-11-12 17:02:35.180000000','--','')
+COMMIT
+INSERT INTO TASKS VALUES(831,'rgokul','Neher New Features - Master Ticket','2013-11-12 17:02:35.181000000',10,'Initiated',5722807,'Details not added yet for this task!','2013-11-12 17:02:35.181000000','--','')
+COMMIT
+INSERT INTO TASKS VALUES(832,'rgokul','Neher should have a Converter to convert TSI API supported XML file to Ace-Test file','2013-11-12 17:02:35.182000000',10,'Initiated',5767718,'Details not added yet for this task!','2013-11-12 17:02:35.182000000','--','')
+COMMIT
+INSERT INTO TASKS VALUES(833,'rgokul','[MCW-011] - Enhancement Implementation','2013-11-12 17:02:35.182000000',10,'Initiated',5357787,'Details not added yet for this task!','2013-11-12 17:02:35.182000000','P1','')
+COMMIT
+INSERT INTO TASKS VALUES(834,'rgokul','Video Task - Eurosport migration of old data','2013-11-12 17:02:35.183000000',10,'Initiated',5734057,'Details not added yet for this task!','2013-11-12 17:02:35.183000000','--','')
+COMMIT
+INSERT INTO TASKS VALUES(835,'rgokul','Exception in XML clean up pebl','2013-11-12 17:02:35.184000000',10,'Initiated',6584711,'Details not added yet for this task!','2013-11-12 17:02:35.184000000','P2','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=834
+INSERT INTO TASKS VALUES(834,'rgokul','Video Task - Eurosport migration of old data','2013-11-12 17:02:35.183000000',10,'In-progress',5734057,'','2013-11-13 14:55:38.102000000','--','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=834
+INSERT INTO TASKS VALUES(834,'rgokul','Video Task - Eurosport migration of old data','2013-11-12 17:02:35.183000000',10,'Done',5734057,'','2013-11-13 14:56:29.676000000','--','')
+COMMIT
+INSERT INTO TASKS VALUES(836,'rgokul','testing','2013-11-13 15:04:44.148000000',10,'Initiated',0,'Details not added yet for this task!','2013-11-13 15:04:44.148000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=836
+INSERT INTO TASKS VALUES(836,'rgokul','testing','2013-11-13 15:04:44.148000000',10,'Initiated',0,'Details not added yet for this task!','2013-11-13 15:20:50.422000000',NULL,'13/11/2013')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=825
+INSERT INTO TASKS VALUES(825,'sujitroy','Tribune Episode Full Feed -  detailed analysis of statistics','2013-11-12 12:10:27.469000000',10,'Done',0,'Write a script to go through the tribune episodes full feed and create a detailed report/demographics on the statistics of episode number/season number/air-date for the shows.','2013-11-14 12:36:02.644000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=824
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=795
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=794
+COMMIT
+INSERT INTO TASKS VALUES(837,'sujitroy','ECT Transition - Add the Box office object UUIDS in the twiki pages','2013-11-14 12:37:44.463000000',10,'Initiated',0,'Details not added yet for this task!','2013-11-14 12:37:44.463000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=604
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=719
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=820
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=837
+INSERT INTO TASKS VALUES(837,'sujitroy','ECT Transition - Add the Box office object UUIDS in the twiki pages','2013-11-14 12:37:44.463000000',10,'Initiated',0,'Updated production box-office UUID in US, ES and FR Twiki''s','2013-11-14 14:37:35.582000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=825
+INSERT INTO TASKS VALUES(825,'sujitroy','Tribune Episode Full Feed -  detailed analysis of statistics','2013-11-12 12:10:27.469000000',10,'Done',0,'Write a script to go through the tribune episodes full feed and create a detailed report/demographics on the statistics of episode number/season number/air-date for the shows. \r\nThe report showed that most of the shows in the tribune database are of the type ''News Show'' or ''Talk Show''. Apart from that majority of the shows has episodes which does not have any episode number or season number. \r\nThis clearly shows the reason behind poor disambiguation match percentage of tribune data against baseline data.','2013-11-18 11:14:14.393000000',NULL,'')
+COMMIT
+INSERT INTO TASKS VALUES(838,'smeghana','[Photo WF] - Implement PEBLs to group and process bunch of records','2013-11-19 10:04:07.641000000',10,'Initiated',6651001,'Details not added yet for this task!','2013-11-19 10:04:07.641000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=823
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=822
+INSERT INTO TASKS VALUES(822,'smeghana','[Tribune] -Ingest largest images','2013-11-12 10:05:34.268000000',10,'Initiated',6622485,'','2013-11-19 10:22:55.107000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=838
+INSERT INTO TASKS VALUES(838,'smeghana','[Photo WF] - Implement PEBLs to group and process bunch of records','2013-11-19 10:04:07.641000000',10,'Initiated',6651001,'1) created 2 Pebls to group the data depending on some criteria and ingest only the  largest image. Discard rest of the images.\r\n    2.0) RnD on Recordgrouper and RecordGroupProcessor Interfaces\r\n    2.1) Implemented RecordGrouper interface for grouping based on show title.\r\n    2.2) Implemented RecordGroupProcessor interface to identify the largest image from batch of images of a particular show. \r\n2) Above PEBLs will be used only in case where images are scattered across channels. Write a JS to sort and retain largest image in a record having several images.','2013-11-19 10:24:26.154000000','P3','')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=826
+INSERT INTO TASKS VALUES(826,'sakshat','VOD XSLT creation','2013-11-12 12:16:35.142000000',10,'Initiated',0,'Working on creation of XSLT for VOD.\r\nXSLT completed.\r\nUnit testing for XSLT to create first cut CCM without validation done.','2013-11-19 11:54:06.172000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=817
+INSERT INTO TASKS VALUES(817,'sakshat','Feed Ingestion','2013-11-05 12:27:04.542000000',10,'Initiated',0,'Ingested Tribune TV Show,Episode and Movie full feed in soln-stage.\r\nDeployed new Tipsy based workflow in Swami for Movie,Show and episode partners.\r\nChanged the sherpa host for the same,along with ingestion of the feeds.\r\nIngestion for TV Shows done.Movie and Episode going on','2013-11-19 11:54:49.124000000',NULL,'')
+COMMIT
+INSERT INTO TASKS VALUES(839,'sujitroy','ECT Transition - Create documentation twiki''s for transition','2013-11-19 12:10:48.545000000',10,'Initiated',0,'Details not added yet for this task!','2013-11-19 12:10:48.545000000',NULL,'')
+COMMIT
+DELETE FROM TASKS WHERE TASK_ID=839
+INSERT INTO TASKS VALUES(839,'sujitroy','ECT Transition - Create documentation twiki''s for transition','2013-11-19 12:10:48.545000000',10,'In-progress',0,'Creating documentation twiki''s for some of the items from - \r\nhttps://docs.google.com/a/yahoo-inc.com/spreadsheet/ccc?key=0ApJHiYnDa-tKdG1HZURoenRWRU5JdW5DWGZFbUs1Z3c#gid=0\r\n\r\n','2013-11-19 12:12:49.729000000',NULL,'')
+COMMIT
+INSERT INTO TASKS VALUES(840,'pshashi','Bring MV rules xls up to date','2013-11-19 15:38:17.247000000',10,'Initiated',3035240,'Details not added yet for this task!','2013-11-19 15:38:17.247000000','--','')
+COMMIT
+INSERT INTO TASKS VALUES(841,'pshashi','DB Schema changes for FEF Conflict Reporter','2013-11-19 15:38:17.247000000',10,'Initiated',3894188,'Details not added yet for this task!','2013-11-19 15:38:17.247000000','--','')
+COMMIT
+INSERT INTO TASKS VALUES(842,'pshashi','QE Taas : Plugin extensive Validations for MatchConfig in package builder','2013-11-19 15:38:17.248000000',10,'Initiated',5868197,'Details not added yet for this task!','2013-11-19 15:38:17.248000000','--','')
+COMMIT
+INSERT INTO TASKS VALUES(843,'pshashi','DM Tools: Rollup ticket to migrate all tools to RHEL 6 as part of colo rewire','2013-11-19 15:38:17.249000000',10,'Initiated',5989191,'Details not added yet for this task!','2013-11-19 15:38:17.249000000','--','')
+COMMIT
+INSERT INTO TASKS VALUES(844,'pshashi','DM Taxonomy: Fix OqDiscoTool services down issue','2013-11-19 15:38:17.249000000',10,'Initiated',6150318,'Details not added yet for this task!','2013-11-19 15:38:17.249000000','--','')
+COMMIT
+INSERT INTO TASKS VALUES(845,'pshashi','DM Taxonomy: Add service name along with port while specifying the ZK server list','2013-11-19 15:38:17.250000000',10,'Initiated',6150329,'Details not added yet for this task!','2013-11-19 15:38:17.250000000','--','')
+COMMIT
+INSERT INTO TASKS VALUES(846,'pshashi','KWEX: Have Separate Error Code for KWEX URLs w/o coverage','2013-11-19 15:38:17.251000000',10,'Initiated',6387693,'Details not added yet for this task!','2013-11-19 15:38:17.251000000','--','')
+COMMIT
+INSERT INTO TASKS VALUES(847,'pshashi','ROS on Answers: Continuously select Answers given uref terms','2013-11-19 15:38:17.254000000',10,'Initiated',6643198,'Details not added yet for this task!','2013-11-19 15:38:17.254000000','--','')
+COMMIT
+INSERT INTO TASKS VALUES(848,'pshashi','KWEX: Kwex doesn''t respond consistently for the same query if multiple lookup db is configured. It gets timed out sometimes with FE.','2013-11-19 15:38:17.256000000',10,'Initiated',6646691,'Details not added yet for this task!','2013-11-19 15:38:17.256000000','--','')
+COMMIT
+INSERT INTO TASKS VALUES(849,'pshashi','ROS on Local: Create mdbm with sH and keyH terms','2013-11-19 15:38:17.257000000',10,'Initiated',6655339,'Details not added yet for this task!','2013-11-19 15:38:17.257000000','--','')
+COMMIT
+INSERT INTO TASKS VALUES(850,'pshashi','KWEX: Merge and consolidate kwex cleaners code onto trunk','2013-11-19 15:38:17.258000000',10,'Initiated',6657739,'Details not added yet for this task!','2013-11-19 15:38:17.258000000','--','')
+COMMIT
+INSERT INTO TASKS VALUES(851,'pshashi','Editorial Tool - WORKFLOW REQUIREMENTS - Parse - requires more clarity','2013-11-19 15:38:17.258000000',10,'Initiated',2047710,'Details not added yet for this task!','2013-11-19 15:38:17.258000000','P3','')
+COMMIT
+INSERT INTO TASKS VALUES(852,'pshashi','Test Data Publish - Ticket for data publish test environment related commits','2013-11-19 15:38:17.259000000',10,'Initiated',2806345,'Details not added yet for this task!','2013-11-19 15:38:17.259000000','P5','')
+COMMIT
+INSERT INTO TASKS VALUES(853,'pshashi','Yards Client :  Provision to control NoTokenization at YardsServer for unreviewed calls only','2013-11-19 15:38:17.260000000',10,'Initiated',3864589,'Details not added yet for this task!','2013-11-19 15:38:17.260000000','--','')
+COMMIT
+INSERT INTO TASKS VALUES(854,'pshashi','KWEX: Exclude the market specific answers.yahoo.com.mdbm files from kwex-data-metapack','2013-11-19 15:38:17.260000000',10,'Initiated',6589757,'Details not added yet for this task!','2013-11-19 15:38:17.260000000','--','')
+COMMIT
+INSERT INTO TASKS VALUES(855,'pshashi','KWEX: Move travel code onto cleaners infrastructure','2013-11-19 15:38:17.261000000',10,'Initiated',6616339,'Details not added yet for this task!','2013-11-19 15:38:17.261000000','--','')
+COMMIT
+INSERT INTO TASKS VALUES(856,'pshashi','Yards Server : Code Cleanup','2013-11-19 15:38:17.262000000',10,'Initiated',3717724,'Details not added yet for this task!','2013-11-19 15:38:17.262000000','--','')
+COMMIT
+INSERT INTO TASKS VALUES(857,'pshashi','QE Taas : No Error Message from Taxonomy in case of missing/bad values for parameters','2013-11-19 15:38:17.262000000',10,'Initiated',5865550,'Details not added yet for this task!','2013-11-19 15:38:17.262000000','--','')
+COMMIT

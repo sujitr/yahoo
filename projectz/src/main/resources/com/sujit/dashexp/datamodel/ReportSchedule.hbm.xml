@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.sujit.dashexp.datamodel">
+	<class name="ReportSchedule" table="SCHEDULES">
+        <id name="userId"  type="string" column="USER"></id>
+        <property name="reportingEnabledFlag" type="boolean" column="ENABLE_FLAG"/>
+        <property name="toAddresses" type="string" column="TO_ADDRESS_LIST"/>
+        <property name="ccAddresses" type="string" column="CC_ADDRESS_LIST"/>
+        <property name="fromAddress" type="string" column="FROM_ADDRESS"/>
+        <property name="reportSubject" type="string" column="REPORT_SUBJECT"/>
+        <property name="reportScheduleDay" type="string" column="REPORT_SCHEDULE_DAY"/>
+        <property name="reportScheduleTime" type="string" column="REPORT_SCHEDULE_TIME"></property>
+        <!-- clubbing related fields  -->
+        <property name="clubbingEnabledFlag" type="boolean" column="CLUB_FLAG"/>
+        <property name="clubWithUserId" type="string" column="CLUB_USER"/>
+        <property name="individualReportFlag" type="boolean" column="INDI_FLAG"/>
+    </class>
+</hibernate-mapping>
