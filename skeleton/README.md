@@ -1,0 +1,1 @@
+A skeleton project with inbuilt jetty web server for quick server based application startup. Think of it as a boilerplate web project for fast bootstrapping.
